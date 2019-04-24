@@ -1,0 +1,287 @@
+\hypertarget{classPencilProducer}{}\section{Pencil\+Producer Class Reference}
+\label{classPencilProducer}\index{PencilProducer@{PencilProducer}}
+
+
+Class to implement the Pencil Producer game @detail In this class we will define the constructor/descructor and all the other methods we need to make it run. As for the first Spring, we are in need of a cons/dest only.  
+
+
+
+
+{\ttfamily \#include $<$pencilproducer.\+h$>$}
+
+Inheritance diagram for Pencil\+Producer\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classPencilProducer}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classPencilProducer_a7b5425cd4bfd41d7b9cc9fe04101df06}{Pencil\+Producer}} (Q\+Widget $\ast$parent=nullptr)
+\item 
+\mbox{\hyperlink{classPencilProducer_a6e4548750600eb7b6886538a23ba4808}{$\sim$\+Pencil\+Producer}} ()
+\end{DoxyCompactItemize}
+\subsection*{Private Slots}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classPencilProducer_a4463cb3676d728734fb935c8ea6fcb14}{on\+\_\+minus\+\_\+clicked}} ()
+\begin{DoxyCompactList}\small\item\em main slots for buttons \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classPencilProducer_a4f25cb44f7656627fb2118db163c6294}{on\+\_\+plus\+\_\+clicked}} ()
+\item 
+void \mbox{\hyperlink{classPencilProducer_a349d36fe7bfb716010b7ee0172e2ba88}{on\+\_\+buy\+Wood\+\_\+clicked}} ()
+\item 
+void \mbox{\hyperlink{classPencilProducer_aa6d6a98ad6b815634efbbf263605824e}{on\+\_\+buy\+Graphite\+\_\+clicked}} ()
+\item 
+void \mbox{\hyperlink{classPencilProducer_a9a278b633e203bc16941093ca1727c85}{on\+\_\+make\+Pencil\+\_\+clicked}} ()
+\item 
+void \mbox{\hyperlink{classPencilProducer_a2d54ee1f50fa095221bde3adf0d71d95}{on\+\_\+buy\+More\+\_\+clicked}} ()
+\item 
+void \mbox{\hyperlink{classPencilProducer_af182bfe6656f6e068da6feb74afa0bec}{update\+All}} ()
+\item 
+void \mbox{\hyperlink{classPencilProducer_aa580bdf7aaf3a94639367011d696a4ee}{check}} ()
+\item 
+void \mbox{\hyperlink{classPencilProducer_abff5d78a2e88f078fb136232521beb8d}{on\+\_\+d1\+\_\+clicked}} ()
+\item 
+void \mbox{\hyperlink{classPencilProducer_a0dd6a7d3b2a36b681bc7b89f4d7873f0}{on\+\_\+d2\+\_\+clicked}} ()
+\item 
+void \mbox{\hyperlink{classPencilProducer_af20103b9e939ee403171d12d94dd4496}{on\+\_\+d3\+\_\+clicked}} ()
+\item 
+void \mbox{\hyperlink{classPencilProducer_a63b3e504b72d24f7a388f2e401d7bcfa}{on\+\_\+d4\+\_\+clicked}} ()
+\item 
+void \mbox{\hyperlink{classPencilProducer_a3b01bf3f86e1e813ebd067ccae4066e3}{on\+\_\+push\+Button\+\_\+clicked}} ()
+\item 
+void \mbox{\hyperlink{classPencilProducer_afbc14a860bb92111effc14c5406c1fe8}{on\+\_\+text\+Buy\+Marketing\+\_\+clicked}} ()
+\item 
+void \mbox{\hyperlink{classPencilProducer_a64ee24e1bfd7b94f69fd997b15c6ffb0}{on\+\_\+unlock\+M\+\_\+clicked}} ()
+\item 
+int \mbox{\hyperlink{classPencilProducer_a86c70087a11297efafa1326d86da8db8}{getunlock}} ()
+\begin{DoxyCompactList}\small\item\em getter unlock \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classPencilProducer_afc339bfc62d0585de028e577b38cb8a3}{setunlock}} ()
+\begin{DoxyCompactList}\small\item\em setter unlock \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classPencilProducer_afcd36c151c55ad1c9024873050eaee4d}{update}} ()
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{classPencilProducer_afcd36c151c55ad1c9024873050eaee4d}{Pencil\+Producer\+::update}} updates all values displayed on the UI and. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classPencilProducer_ae4a56a7023ae3bb0b3f781c3f2a99d7e}{start\+Timer}} ()
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Ui\+::\+Pencil\+Producer $\ast$ \mbox{\hyperlink{classPencilProducer_af8ef000b90959052d1ab135ca9764621}{ui}}
+\item 
+\mbox{\hyperlink{classWallet}{Wallet}} \mbox{\hyperlink{classPencilProducer_a9ce8a9dbf5deb875692d5dcec4374e2d}{wallet}}
+\item 
+\mbox{\hyperlink{classGraphite__Inventory}{Graphite\+\_\+\+Inventory}} \mbox{\hyperlink{classPencilProducer_a04a8078a404418407a30a4175aaf890a}{graphite\+Inventory}}
+\item 
+\mbox{\hyperlink{classWood__Inventory}{Wood\+\_\+\+Inventory}} \mbox{\hyperlink{classPencilProducer_ac0454fe420705b3e3e922661e89ecee0}{wood\+Inventory}}
+\item 
+\mbox{\hyperlink{classPencil__Inventory}{Pencil\+\_\+\+Inventory}} \mbox{\hyperlink{classPencilProducer_ad1c13392410c1e57b6baff0bfde51e75}{pencil\+Inventory}}
+\item 
+\mbox{\hyperlink{classAPM2000__Inventory}{A\+P\+M2000\+\_\+\+Inventory}} \mbox{\hyperlink{classPencilProducer_a6af6334d9d18c19f235411a4c5fafb46}{apm2000\+Inventory}}
+\item 
+int \mbox{\hyperlink{classPencilProducer_a4b443630a23b42fcf66cd9ba632a89c9}{unlock}} = 0
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Class to implement the Pencil Producer game @detail In this class we will define the constructor/descructor and all the other methods we need to make it run. As for the first Spring, we are in need of a cons/dest only. 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classPencilProducer_a7b5425cd4bfd41d7b9cc9fe04101df06}\label{classPencilProducer_a7b5425cd4bfd41d7b9cc9fe04101df06}} 
+\index{PencilProducer@{PencilProducer}!PencilProducer@{PencilProducer}}
+\index{PencilProducer@{PencilProducer}!PencilProducer@{PencilProducer}}
+\subsubsection{\texorpdfstring{PencilProducer()}{PencilProducer()}}
+{\footnotesize\ttfamily Pencil\+Producer\+::\+Pencil\+Producer (\begin{DoxyParamCaption}\item[{Q\+Widget $\ast$}]{parent = {\ttfamily nullptr} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+Default constructor. \mbox{\Hypertarget{classPencilProducer_a6e4548750600eb7b6886538a23ba4808}\label{classPencilProducer_a6e4548750600eb7b6886538a23ba4808}} 
+\index{PencilProducer@{PencilProducer}!````~PencilProducer@{$\sim$PencilProducer}}
+\index{````~PencilProducer@{$\sim$PencilProducer}!PencilProducer@{PencilProducer}}
+\subsubsection{\texorpdfstring{$\sim$PencilProducer()}{~PencilProducer()}}
+{\footnotesize\ttfamily Pencil\+Producer\+::$\sim$\+Pencil\+Producer (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Default desctructor. 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classPencilProducer_aa580bdf7aaf3a94639367011d696a4ee}\label{classPencilProducer_aa580bdf7aaf3a94639367011d696a4ee}} 
+\index{PencilProducer@{PencilProducer}!check@{check}}
+\index{check@{check}!PencilProducer@{PencilProducer}}
+\subsubsection{\texorpdfstring{check}{check}}
+{\footnotesize\ttfamily void Pencil\+Producer\+::check (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [slot]}}
+
+\mbox{\Hypertarget{classPencilProducer_a86c70087a11297efafa1326d86da8db8}\label{classPencilProducer_a86c70087a11297efafa1326d86da8db8}} 
+\index{PencilProducer@{PencilProducer}!getunlock@{getunlock}}
+\index{getunlock@{getunlock}!PencilProducer@{PencilProducer}}
+\subsubsection{\texorpdfstring{getunlock}{getunlock}}
+{\footnotesize\ttfamily int Pencil\+Producer\+::getunlock (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [slot]}}
+
+
+
+getter unlock 
+
+\mbox{\Hypertarget{classPencilProducer_aa6d6a98ad6b815634efbbf263605824e}\label{classPencilProducer_aa6d6a98ad6b815634efbbf263605824e}} 
+\index{PencilProducer@{PencilProducer}!on\_buyGraphite\_clicked@{on\_buyGraphite\_clicked}}
+\index{on\_buyGraphite\_clicked@{on\_buyGraphite\_clicked}!PencilProducer@{PencilProducer}}
+\subsubsection{\texorpdfstring{on\_buyGraphite\_clicked}{on\_buyGraphite\_clicked}}
+{\footnotesize\ttfamily void Pencil\+Producer\+::on\+\_\+buy\+Graphite\+\_\+clicked (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [slot]}}
+
+\mbox{\Hypertarget{classPencilProducer_a2d54ee1f50fa095221bde3adf0d71d95}\label{classPencilProducer_a2d54ee1f50fa095221bde3adf0d71d95}} 
+\index{PencilProducer@{PencilProducer}!on\_buyMore\_clicked@{on\_buyMore\_clicked}}
+\index{on\_buyMore\_clicked@{on\_buyMore\_clicked}!PencilProducer@{PencilProducer}}
+\subsubsection{\texorpdfstring{on\_buyMore\_clicked}{on\_buyMore\_clicked}}
+{\footnotesize\ttfamily void Pencil\+Producer\+::on\+\_\+buy\+More\+\_\+clicked (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [slot]}}
+
+\mbox{\Hypertarget{classPencilProducer_a349d36fe7bfb716010b7ee0172e2ba88}\label{classPencilProducer_a349d36fe7bfb716010b7ee0172e2ba88}} 
+\index{PencilProducer@{PencilProducer}!on\_buyWood\_clicked@{on\_buyWood\_clicked}}
+\index{on\_buyWood\_clicked@{on\_buyWood\_clicked}!PencilProducer@{PencilProducer}}
+\subsubsection{\texorpdfstring{on\_buyWood\_clicked}{on\_buyWood\_clicked}}
+{\footnotesize\ttfamily void Pencil\+Producer\+::on\+\_\+buy\+Wood\+\_\+clicked (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [slot]}}
+
+\mbox{\Hypertarget{classPencilProducer_abff5d78a2e88f078fb136232521beb8d}\label{classPencilProducer_abff5d78a2e88f078fb136232521beb8d}} 
+\index{PencilProducer@{PencilProducer}!on\_d1\_clicked@{on\_d1\_clicked}}
+\index{on\_d1\_clicked@{on\_d1\_clicked}!PencilProducer@{PencilProducer}}
+\subsubsection{\texorpdfstring{on\_d1\_clicked}{on\_d1\_clicked}}
+{\footnotesize\ttfamily void Pencil\+Producer\+::on\+\_\+d1\+\_\+clicked (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [slot]}}
+
+\mbox{\Hypertarget{classPencilProducer_a0dd6a7d3b2a36b681bc7b89f4d7873f0}\label{classPencilProducer_a0dd6a7d3b2a36b681bc7b89f4d7873f0}} 
+\index{PencilProducer@{PencilProducer}!on\_d2\_clicked@{on\_d2\_clicked}}
+\index{on\_d2\_clicked@{on\_d2\_clicked}!PencilProducer@{PencilProducer}}
+\subsubsection{\texorpdfstring{on\_d2\_clicked}{on\_d2\_clicked}}
+{\footnotesize\ttfamily void Pencil\+Producer\+::on\+\_\+d2\+\_\+clicked (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [slot]}}
+
+\mbox{\Hypertarget{classPencilProducer_af20103b9e939ee403171d12d94dd4496}\label{classPencilProducer_af20103b9e939ee403171d12d94dd4496}} 
+\index{PencilProducer@{PencilProducer}!on\_d3\_clicked@{on\_d3\_clicked}}
+\index{on\_d3\_clicked@{on\_d3\_clicked}!PencilProducer@{PencilProducer}}
+\subsubsection{\texorpdfstring{on\_d3\_clicked}{on\_d3\_clicked}}
+{\footnotesize\ttfamily void Pencil\+Producer\+::on\+\_\+d3\+\_\+clicked (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [slot]}}
+
+\mbox{\Hypertarget{classPencilProducer_a63b3e504b72d24f7a388f2e401d7bcfa}\label{classPencilProducer_a63b3e504b72d24f7a388f2e401d7bcfa}} 
+\index{PencilProducer@{PencilProducer}!on\_d4\_clicked@{on\_d4\_clicked}}
+\index{on\_d4\_clicked@{on\_d4\_clicked}!PencilProducer@{PencilProducer}}
+\subsubsection{\texorpdfstring{on\_d4\_clicked}{on\_d4\_clicked}}
+{\footnotesize\ttfamily void Pencil\+Producer\+::on\+\_\+d4\+\_\+clicked (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [slot]}}
+
+\mbox{\Hypertarget{classPencilProducer_a9a278b633e203bc16941093ca1727c85}\label{classPencilProducer_a9a278b633e203bc16941093ca1727c85}} 
+\index{PencilProducer@{PencilProducer}!on\_makePencil\_clicked@{on\_makePencil\_clicked}}
+\index{on\_makePencil\_clicked@{on\_makePencil\_clicked}!PencilProducer@{PencilProducer}}
+\subsubsection{\texorpdfstring{on\_makePencil\_clicked}{on\_makePencil\_clicked}}
+{\footnotesize\ttfamily void Pencil\+Producer\+::on\+\_\+make\+Pencil\+\_\+clicked (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [slot]}}
+
+\mbox{\Hypertarget{classPencilProducer_a4463cb3676d728734fb935c8ea6fcb14}\label{classPencilProducer_a4463cb3676d728734fb935c8ea6fcb14}} 
+\index{PencilProducer@{PencilProducer}!on\_minus\_clicked@{on\_minus\_clicked}}
+\index{on\_minus\_clicked@{on\_minus\_clicked}!PencilProducer@{PencilProducer}}
+\subsubsection{\texorpdfstring{on\_minus\_clicked}{on\_minus\_clicked}}
+{\footnotesize\ttfamily void Pencil\+Producer\+::on\+\_\+minus\+\_\+clicked (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [slot]}}
+
+
+
+main slots for buttons 
+
+\mbox{\Hypertarget{classPencilProducer_a4f25cb44f7656627fb2118db163c6294}\label{classPencilProducer_a4f25cb44f7656627fb2118db163c6294}} 
+\index{PencilProducer@{PencilProducer}!on\_plus\_clicked@{on\_plus\_clicked}}
+\index{on\_plus\_clicked@{on\_plus\_clicked}!PencilProducer@{PencilProducer}}
+\subsubsection{\texorpdfstring{on\_plus\_clicked}{on\_plus\_clicked}}
+{\footnotesize\ttfamily void Pencil\+Producer\+::on\+\_\+plus\+\_\+clicked (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [slot]}}
+
+\mbox{\Hypertarget{classPencilProducer_a3b01bf3f86e1e813ebd067ccae4066e3}\label{classPencilProducer_a3b01bf3f86e1e813ebd067ccae4066e3}} 
+\index{PencilProducer@{PencilProducer}!on\_pushButton\_clicked@{on\_pushButton\_clicked}}
+\index{on\_pushButton\_clicked@{on\_pushButton\_clicked}!PencilProducer@{PencilProducer}}
+\subsubsection{\texorpdfstring{on\_pushButton\_clicked}{on\_pushButton\_clicked}}
+{\footnotesize\ttfamily void Pencil\+Producer\+::on\+\_\+push\+Button\+\_\+clicked (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [slot]}}
+
+\mbox{\Hypertarget{classPencilProducer_afbc14a860bb92111effc14c5406c1fe8}\label{classPencilProducer_afbc14a860bb92111effc14c5406c1fe8}} 
+\index{PencilProducer@{PencilProducer}!on\_textBuyMarketing\_clicked@{on\_textBuyMarketing\_clicked}}
+\index{on\_textBuyMarketing\_clicked@{on\_textBuyMarketing\_clicked}!PencilProducer@{PencilProducer}}
+\subsubsection{\texorpdfstring{on\_textBuyMarketing\_clicked}{on\_textBuyMarketing\_clicked}}
+{\footnotesize\ttfamily void Pencil\+Producer\+::on\+\_\+text\+Buy\+Marketing\+\_\+clicked (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [slot]}}
+
+\mbox{\Hypertarget{classPencilProducer_a64ee24e1bfd7b94f69fd997b15c6ffb0}\label{classPencilProducer_a64ee24e1bfd7b94f69fd997b15c6ffb0}} 
+\index{PencilProducer@{PencilProducer}!on\_unlockM\_clicked@{on\_unlockM\_clicked}}
+\index{on\_unlockM\_clicked@{on\_unlockM\_clicked}!PencilProducer@{PencilProducer}}
+\subsubsection{\texorpdfstring{on\_unlockM\_clicked}{on\_unlockM\_clicked}}
+{\footnotesize\ttfamily void Pencil\+Producer\+::on\+\_\+unlock\+M\+\_\+clicked (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [slot]}}
+
+\mbox{\Hypertarget{classPencilProducer_afc339bfc62d0585de028e577b38cb8a3}\label{classPencilProducer_afc339bfc62d0585de028e577b38cb8a3}} 
+\index{PencilProducer@{PencilProducer}!setunlock@{setunlock}}
+\index{setunlock@{setunlock}!PencilProducer@{PencilProducer}}
+\subsubsection{\texorpdfstring{setunlock}{setunlock}}
+{\footnotesize\ttfamily void Pencil\+Producer\+::setunlock (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [slot]}}
+
+
+
+setter unlock 
+
+\mbox{\Hypertarget{classPencilProducer_ae4a56a7023ae3bb0b3f781c3f2a99d7e}\label{classPencilProducer_ae4a56a7023ae3bb0b3f781c3f2a99d7e}} 
+\index{PencilProducer@{PencilProducer}!startTimer@{startTimer}}
+\index{startTimer@{startTimer}!PencilProducer@{PencilProducer}}
+\subsubsection{\texorpdfstring{startTimer()}{startTimer()}}
+{\footnotesize\ttfamily void Pencil\+Producer\+::start\+Timer (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classPencilProducer_afcd36c151c55ad1c9024873050eaee4d}\label{classPencilProducer_afcd36c151c55ad1c9024873050eaee4d}} 
+\index{PencilProducer@{PencilProducer}!update@{update}}
+\index{update@{update}!PencilProducer@{PencilProducer}}
+\subsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily void Pencil\+Producer\+::update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+\mbox{\hyperlink{classPencilProducer_afcd36c151c55ad1c9024873050eaee4d}{Pencil\+Producer\+::update}} updates all values displayed on the UI and. 
+
+\mbox{\Hypertarget{classPencilProducer_af182bfe6656f6e068da6feb74afa0bec}\label{classPencilProducer_af182bfe6656f6e068da6feb74afa0bec}} 
+\index{PencilProducer@{PencilProducer}!updateAll@{updateAll}}
+\index{updateAll@{updateAll}!PencilProducer@{PencilProducer}}
+\subsubsection{\texorpdfstring{updateAll}{updateAll}}
+{\footnotesize\ttfamily void Pencil\+Producer\+::update\+All (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [slot]}}
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classPencilProducer_a6af6334d9d18c19f235411a4c5fafb46}\label{classPencilProducer_a6af6334d9d18c19f235411a4c5fafb46}} 
+\index{PencilProducer@{PencilProducer}!apm2000Inventory@{apm2000Inventory}}
+\index{apm2000Inventory@{apm2000Inventory}!PencilProducer@{PencilProducer}}
+\subsubsection{\texorpdfstring{apm2000Inventory}{apm2000Inventory}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classAPM2000__Inventory}{A\+P\+M2000\+\_\+\+Inventory}} Pencil\+Producer\+::apm2000\+Inventory\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classPencilProducer_a04a8078a404418407a30a4175aaf890a}\label{classPencilProducer_a04a8078a404418407a30a4175aaf890a}} 
+\index{PencilProducer@{PencilProducer}!graphiteInventory@{graphiteInventory}}
+\index{graphiteInventory@{graphiteInventory}!PencilProducer@{PencilProducer}}
+\subsubsection{\texorpdfstring{graphiteInventory}{graphiteInventory}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classGraphite__Inventory}{Graphite\+\_\+\+Inventory}} Pencil\+Producer\+::graphite\+Inventory\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classPencilProducer_ad1c13392410c1e57b6baff0bfde51e75}\label{classPencilProducer_ad1c13392410c1e57b6baff0bfde51e75}} 
+\index{PencilProducer@{PencilProducer}!pencilInventory@{pencilInventory}}
+\index{pencilInventory@{pencilInventory}!PencilProducer@{PencilProducer}}
+\subsubsection{\texorpdfstring{pencilInventory}{pencilInventory}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classPencil__Inventory}{Pencil\+\_\+\+Inventory}} Pencil\+Producer\+::pencil\+Inventory\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classPencilProducer_af8ef000b90959052d1ab135ca9764621}\label{classPencilProducer_af8ef000b90959052d1ab135ca9764621}} 
+\index{PencilProducer@{PencilProducer}!ui@{ui}}
+\index{ui@{ui}!PencilProducer@{PencilProducer}}
+\subsubsection{\texorpdfstring{ui}{ui}}
+{\footnotesize\ttfamily Ui\+::\+Pencil\+Producer$\ast$ Pencil\+Producer\+::ui\hspace{0.3cm}{\ttfamily [private]}}
+
+Create the UI widget for the window \mbox{\Hypertarget{classPencilProducer_a4b443630a23b42fcf66cd9ba632a89c9}\label{classPencilProducer_a4b443630a23b42fcf66cd9ba632a89c9}} 
+\index{PencilProducer@{PencilProducer}!unlock@{unlock}}
+\index{unlock@{unlock}!PencilProducer@{PencilProducer}}
+\subsubsection{\texorpdfstring{unlock}{unlock}}
+{\footnotesize\ttfamily int Pencil\+Producer\+::unlock = 0\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classPencilProducer_a9ce8a9dbf5deb875692d5dcec4374e2d}\label{classPencilProducer_a9ce8a9dbf5deb875692d5dcec4374e2d}} 
+\index{PencilProducer@{PencilProducer}!wallet@{wallet}}
+\index{wallet@{wallet}!PencilProducer@{PencilProducer}}
+\subsubsection{\texorpdfstring{wallet}{wallet}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classWallet}{Wallet}} Pencil\+Producer\+::wallet\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classPencilProducer_ac0454fe420705b3e3e922661e89ecee0}\label{classPencilProducer_ac0454fe420705b3e3e922661e89ecee0}} 
+\index{PencilProducer@{PencilProducer}!woodInventory@{woodInventory}}
+\index{woodInventory@{woodInventory}!PencilProducer@{PencilProducer}}
+\subsubsection{\texorpdfstring{woodInventory}{woodInventory}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classWood__Inventory}{Wood\+\_\+\+Inventory}} Pencil\+Producer\+::wood\+Inventory\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Pencil-\/\+Producer/\mbox{\hyperlink{pencilproducer_8h}{pencilproducer.\+h}}\item 
+Pencil-\/\+Producer/\mbox{\hyperlink{pencilproducer_8cpp}{pencilproducer.\+cpp}}\end{DoxyCompactItemize}

@@ -1,0 +1,9 @@
+# Ignore miscellaneous files
+.vscode
+# Ignore build folders
+Pencil-Producer/build
+Pencil-Producer/exportvariables
+build
+build-Pencil-Producer-Desktop_Qt_5_12_1_clang_64bit-Debug
+build-Test-Desktop_Qt_5_12_1_clang_64bit-Debug
+build-Pencil-Producer-Desktop_Qt_5_12_1_GCC_64bit-Debug/**
