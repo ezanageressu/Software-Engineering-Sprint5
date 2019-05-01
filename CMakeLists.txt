@@ -25,6 +25,12 @@ set(pencilproducer_SRCS
     Pencil-Producer/graphite_inventory.cpp
     Pencil-Producer/pencil_inventory.cpp
     Pencil-Producer/apm2000_inventory.cpp
+    Pencil-Producer/scoreboard.ui
+    Pencil-Producer/scoreboard.cpp
+    Pencil-Producer/scoreboard.h
+    Pencil-Producer/welcomescreen.cpp
+    Pencil-Producer/welcomescreen.h
+    Pencil-Producer/welcomescreen.ui
 )
 # Tell CMake to create the pencilproducer executable
 add_executable(pencilproducer ${pencilproducer_SRCS})

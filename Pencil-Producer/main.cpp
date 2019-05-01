@@ -20,7 +20,7 @@
   * \endcode
   */
 
-#include "pencilproducer.h"
+#include "welcomescreen.h"
 #include <QApplication>
 //#include <QNetworkAccessManager>
 
@@ -34,8 +34,7 @@
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
-    PencilProducer pencilproducer;
-    pencilproducer.show();
-    //QNetworkRequest request(QUrl(“http://ec2-3-121-209-122.eu-central-1.compute.amazonaws.com/getscores”));
+    MainWindow welcomescreen;
+    welcomescreen.show();
     return a.exec();
 }

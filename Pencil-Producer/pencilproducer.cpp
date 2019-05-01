@@ -26,7 +26,6 @@ PencilProducer::PencilProducer(QWidget *parent) :
     ui->textBuyMarketing->setVisible(false);
     ui->pushButton->setVisible(false);
     ui->unlockM->setVisible(false);
-    ui->highscoretable->setVisible(false);
     update();
     startTimer();
 
@@ -77,7 +76,7 @@ void PencilProducer::update()
     ui->pencilsInInventory->setText("<html>Pencils in Inventory: <b>" + str + "</b></html>");
 
     str.setNum(priceOfPencil, 'f', 2);
-    ui->priceOfPencil->setText("<html>Price of oui: <b>$" + str + "</b></html>");
+    ui->priceOfPencil->setText("<html>Price of Pencil: <b>$" + str + "</b></html>");
 
     str.setNum(woodLeft, 'f', 2);
     ui->woodLeft->setText("<html>Wood Left: <b>" + str + " m</b></html>");
@@ -301,56 +300,7 @@ void PencilProducer::setunlock()
     unlock = unlock + 1;
 }
 
-void PencilProducer::on_newgame_clicked()
-{
-    ui->welcome->hide();
-    ui->newgame->hide();
-    ui->loadgame->hide();
-    ui->highscores->hide();
-    ui->welcomelab->hide();
-    ui->highscoretable->hide();
-}
 
-QDataStream& operator>>(QDataStream& in, PencilProducer* pencil)
-{
-    Wallet wallet;
-    APM2000_Inventory apm;
-    Pencil_Inventory invent;
-    Wood_Inventory wood;
-    Graphite_Inventory graphite;
-    QString unlock = QString::number(pencil->getunlock());
-    QString balance = QString::number(wallet.getBankBalance());
-    QString number = QString::number(apm.getNumber());
-    QString rate = QString::number(apm.getRate());
-    QString price = QString::number(apm.getPrice());
-    QString intell_price = QString::number(apm.getIntelligencePrice());
-    QString amount = QString::number(invent.getAmount());
-    QString intell = QString::number(invent.getIntelligence());
-    QString M = QString::number(invent.getM());
-    QString marketing = QString::number(invent.getMarketingPrice());
-    QString pencilprice = QString::number(invent.getPrice());
-    QString publicdemand = QString::number(invent.getPublicDemand());
-    QString totalnumber = QString::number(invent.getTotalNumberOfPencilsProduced());
-    QString woodamount = QString::number(wood.getPrice());
-    QString gamount = QString::number(graphite.getPrice());
-    in >> unlock >> balance >> number >> rate >> price >>
-       intell_price >> amount >> intell >> M >> marketing >>
-       pencilprice >> publicdemand >> totalnumber >> woodamount >>
-       gamount;
-    return in;
-}
-
-
-void PencilProducer::on_highscores_clicked()
-{
-    //Connecting the function to get the data from the file
-    QNetworkAccessManager *score = new QNetworkAccessManager(this);
-    connect(score, &QNetworkAccessManager::finished, this, &PencilProducer::netfunc);
-    const QUrl url = QUrl(myURL);
-    QNetworkRequest request(url);
-    score->get(request);
-
-}
 void PencilProducer::netfuncurl(QNetworkReply *reply)
 {
     QString str;
@@ -360,144 +310,90 @@ void PencilProducer::netfuncurl(QNetworkReply *reply)
     QJsonObject jsonObject = jsonResponse.object();
     QJsonArray jsonArray = jsonObject["link"].toArray();
     /// Appending to received URL
-    myURL = "http://";
-    myURL.append(jsonObject["link"].toString()) ;
-    myURL.append("/getscores") ;
     postURL = "http://";
     postURL.append(jsonObject["link"].toString()) ;
     postURL.append("/uploadscore") ;
 }
 
 
-void PencilProducer::netfunc(QNetworkReply *reply)
-{
-    if(ui->highscoretable->isVisible() == true)
-    {
-        ui->highscoretable->setVisible(false);
-    }
-    else
-    {
-        QString str;
-        str = reply->readAll();
-
-        if(str.isEmpty()==true)
-        {
-            qDebug() << "Error no data found";
-            exit(1);
-        }
-
-        QJsonDocument jsonResponse = QJsonDocument::fromJson(str.toUtf8());
-        QJsonObject jsonObject = jsonResponse.object();
-        QJsonArray jsonArray = jsonObject["highscores"].toArray();
-        QList<QString> usernames;
-        QString finaltable;
-        QString key2;
-        int scores[10];
-        int i= 0;
-        int n = jsonArray.size();
-        int j, key;
-        ///Getting and sorting the score values we get
-        while(i<n)
-        {
-            foreach (const QJsonValue & value, jsonArray)
-            {
-                QJsonObject obj = value.toObject();
-                usernames.append(obj["game-username"].toString()) ;
-                scores[i] = obj["score"].toInt();
-                i++;
-            }
-
-        }
-
-        for (i = 1; i < n; i++)
-        {
-            key = scores[i];
-            key2 = usernames[i];
-            j = i - 1;
-
-            while (j >= 0 && scores[j] < key)
-            {
-                scores[j + 1] = scores[j];
-                usernames[j+1] = usernames[j];
-                j = j - 1;
-
-            }
-            scores[j + 1] = key;
-            usernames[j+1] = key2;
-
-        }
-        ///Displaying the final scores table
-        finaltable.append("\n") ;
-        finaltable.append("Highscores") ;
-
-        for(i=0; i<10; i++)
-        {
-            finaltable.append("\n\n") ;
-            finaltable.append(usernames[i]) ;
-            finaltable.append(":") ;
-            finaltable.append(QString::number(scores[i]));
-
-
-        }
-
-        ui->highscoretable->setText(finaltable);
-        ui->highscoretable->setVisible(true);
-    }
-
-}
-QDataStream& operator<<(QDataStream& out, PencilProducer* pencil)
-{
-    Wallet wallet;
-    APM2000_Inventory apm;
-    Pencil_Inventory invent;
-    Wood_Inventory wood;
-    Graphite_Inventory graphite;
-    QString unlock = QString::number(pencil->getunlock());
-    QString balance = QString::number(wallet.getBankBalance());
-    QString number = QString::number(apm.getNumber());
-    QString rate = QString::number(apm.getRate());
-    QString price = QString::number(apm.getPrice());
-    QString intell_price = QString::number(apm.getIntelligencePrice());
-    QString amount = QString::number(invent.getAmount());
-    QString intell = QString::number(invent.getIntelligence());
-    QString M = QString::number(invent.getM());
-    QString marketing = QString::number(invent.getMarketingPrice());
-    QString pencilprice = QString::number(invent.getPrice());
-    QString publicdemand = QString::number(invent.getPublicDemand());
-    QString totalnumber = QString::number(invent.getTotalNumberOfPencilsProduced());
-    QString woodamount = QString::number(wood.getPrice());
-    QString gamount = QString::number(graphite.getPrice());
-    out << unlock << balance << number << rate << price <<
-        intell_price << amount << intell << M << marketing <<
-        pencilprice << publicdemand << totalnumber << woodamount << gamount;
-    return out;
-}
-
-
 void PencilProducer::on_save_clicked()
 {
-    ofstream myfile("../save/data.sav");
-    if (myfile.is_open())
-    {
-        myfile << "a- Balance = "<< wallet.getBankBalance() << "\n";
-        myfile << "b- Number of APM = "<< apm2000Inventory.getNumber() << "\n";
-        myfile << "c- Rate of APM = "<< apm2000Inventory.getAPMRate()<< "\n";
-        myfile << "d- Price of APM = "<< apm2000Inventory.getPrice() << "\n";
-        myfile << "e- Price of Intelligence = "<< apm2000Inventory.getIntelligencePrice() << "\n";
-        myfile << "f- Amount of Pencil = "<< pencilInventory.getAmount() << "\n";
-        myfile << "g- Amount of Intelligence = "<< pencilInventory.getIntelligence() << "\n";
-        myfile << "h- Marketing = "<< pencilInventory.getM() << "\n";
-        myfile << "i- Price of Marketing = "<< pencilInventory.getMarketingPrice() << "\n";
-        myfile << "j- Price of Pencil = "<< pencilInventory.getPrice()  << "\n";
-        myfile << "k- Total Number of Pencil = "<< pencilInventory.getTotalNumberOfPencilsProduced() << "\n";
-        myfile << "l- Amount of Wood = "<< woodInventory.getAmount() << "\n";
-        myfile << "m- Amount of Graphite = "<< graphiteInventory.getAmount() << "\n";
-        myfile << "n- Version of APM = " << apm2000Inventory.getVersion() << "\n";
+    QString fileName = QFileDialog::getSaveFileName(
+            this,
+            tr("Save Game"),
+            tr("saved-game.sav"));
 
-        myfile.close();
-    }
-    else cout << "Unable to open file";
+        if (fileName.isEmpty())
+        {
+            return;
+        }
+        else
+        {
 
+            QFile file(fileName);
+            if (!file.open(QIODevice::WriteOnly))
+            {
+                QMessageBox::information(this, tr("Unable to open file"),
+                                         file.errorString());
+                return;
+            }
+
+            QDataStream out(&file);
+            out.setVersion(QDataStream::Qt_4_5);
+            QMap<QString, QString> data;
+            saveData(data);
+            out << data;
+        }
+    uploadscoretoserver();
+
+}
+
+void PencilProducer::saveData(QMap<QString, QString> &data)
+{
+    data["Balance"] = QString::number(wallet.getBankBalance());
+    data["Number of APM"] = QString::number(apm2000Inventory.getNumber());
+    data["Rate of APM"] = QString::number(apm2000Inventory.getAPMRate());
+    data["Price of APM"] = QString::number(apm2000Inventory.getPrice());
+    data["Price of Intelligence"] = QString::number(apm2000Inventory.getIntelligencePrice());
+    data["Amount of Pencil"] = QString::number(pencilInventory.getAmount());
+    data["Amount of Intelligence"] = QString::number(pencilInventory.getIntelligence());
+    data["Marketing"] = QString::number(pencilInventory.getM());
+    data["Price of Marketing"] = QString::number(pencilInventory.getMarketingPrice());
+    data["Price of Pencil"] = QString::number(pencilInventory.getPrice());
+    data["Total Number of Pencil"] = QString::number(pencilInventory.getTotalNumberOfPencilsProduced());
+
+    data["Amount of Wood"] = QString::number(woodInventory.getAmount());
+    data["Amount of Graphite"] = QString::number(graphiteInventory.getAmount());
+    data["Version of APM"] = QString::number(apm2000Inventory.getVersion());
+}
+
+void PencilProducer::onfinish(QNetworkReply* reply)
+{
+    QByteArray buffer = reply->readAll();
+    qDebug() << buffer;
+}
+
+void PencilProducer::uploadData(const QMap<QString, QString> data)
+{
+    wallet.setBankBalance(data["Balance"].toDouble());
+    apm2000Inventory.setNumber(data["Number of APM"].toDouble());
+    apm2000Inventory.setAPMRate(data["Rate of APM"].toDouble());
+    apm2000Inventory.setPrice(data["Price of APM"].toDouble());
+    apm2000Inventory.setIntelligencePrice(data["Price of Intelligence"].toDouble());
+    pencilInventory.setAmount(data["Amount of Pencil"].toDouble());
+    pencilInventory.setIntelligence(data["Amount of Intelligence"].toDouble());
+    pencilInventory.setM(data["Marketing"].toDouble());
+    pencilInventory.setMarketingPrice(data["Price of Marketing"].toDouble());
+    pencilInventory.setPrice(data["Price of Pencil"].toDouble());
+    pencilInventory.setTotalNumberOfPencilsProduced(data["Total Number of Pencil"].toDouble());
+    woodInventory.setAmount(data["Amount of Wood"].toDouble());
+    graphiteInventory.setAmount(data["Amount of Graphite"].toDouble());
+    apm2000Inventory.setVersion(data["Version of APM"].toDouble());
+
+}
+
+void PencilProducer::uploadscoretoserver()
+{
     QString histignore;
     QString username;
     QString se_token;
@@ -509,10 +405,6 @@ void PencilProducer::on_save_clicked()
 
     ///Setting up temporary environment variables for testing. Use this to make sure
     ///environment variables are working. ADD details inside the quotation marks
-
-//    qputenv ("JACOBS_ID", " ");
-//    qputenv("SE_TOKEN", " ");
-//    qputenv("GAME_USERNAME", " ");
 
     histignore = std::getenv("HISTIGNORE");
     username =  std::getenv("JACOBS_ID");
@@ -556,132 +448,7 @@ void PencilProducer::on_save_clicked()
     connect(manager, SIGNAL(finished(QNetworkReply*)), this,
             SLOT(onfinish(QNetworkReply*)));
     manager->post(request, jsonString);
-}
 
-void PencilProducer::onfinish(QNetworkReply* reply)
-{
-    QByteArray buffer = reply->readAll();
-    qDebug() << buffer;
-}
-
-void PencilProducer::on_loadgame_clicked()
-{
-    ///Exit welcome screen and go to game screen
-    ui->welcome->hide();
-    ui->newgame->hide();
-    ui->loadgame->hide();
-    ui->highscores->hide();
-    ui->welcomelab->hide();
-
-    string line;
-    ifstream myfile ("../save/data.sav");
-    if(myfile.is_open())
-    {
-        while (getline(myfile,line))
-        {
-            if (line[0] == 'a')  ///Check if correct line is being read or not
-            {
-                QString str = ((line.substr(line.find("=") + 1)).c_str()); ///str is the sub-string after the "=" sign
-                double val = str.toDouble();
-                wallet.setBankBalance(val);
-                cout << val << endl;
-            }
-            if (line[0] == 'b')
-            {
-                QString str = ((line.substr(line.find("=") + 1)).c_str());
-                double val = str.toDouble();
-                apm2000Inventory.setNumber(val);
-                cout << val << endl;
-            }
-            if (line[0] == 'c')
-            {
-                QString str = ((line.substr(line.find("=") + 1)).c_str());
-                double val = str.toDouble();
-                apm2000Inventory.setAPMRate(val);
-                cout << val << endl;
-            }
-            if (line[0] == 'd')
-            {
-                QString str = ((line.substr(line.find("=") + 1)).c_str());
-                double val = str.toDouble();
-                apm2000Inventory.setPrice(val);
-                cout << val << endl;
-            }
-            if (line[0] == 'e')
-            {
-                QString str = ((line.substr(line.find("=") + 1)).c_str());
-                double val = str.toDouble();
-                apm2000Inventory.setIntelligencePrice(val);
-                cout << val << endl;
-            }
-            if (line[0] == 'f')
-            {
-                QString str = ((line.substr(line.find("=") + 1)).c_str());
-                double val = str.toDouble();
-                pencilInventory.setAmount(val);
-                cout << val << endl;
-            }
-            if (line[0] == 'g')
-            {
-                QString str = ((line.substr(line.find("=") + 1)).c_str());
-                double val = str.toDouble();
-                pencilInventory.setIntelligence(val);
-                cout << val << endl;
-            }
-            if (line[0] == 'h')
-            {
-                QString str = ((line.substr(line.find("=") + 1)).c_str());
-                double val = str.toDouble();
-                pencilInventory.setM(val);
-                cout << val << endl;
-            }
-            if (line[0] == 'i')
-            {
-                QString str = ((line.substr(line.find("=") + 1)).c_str());
-                double val = str.toDouble();
-                pencilInventory.setMarketingPrice(val);
-                cout << val << endl;
-            }
-            if (line[0] == 'j')
-            {
-                QString str = ((line.substr(line.find("=") + 1)).c_str());
-                double val = str.toDouble();
-                pencilInventory.setPrice(val);
-                cout << val << endl;
-            }
-
-            if (line[0] == 'k')
-            {
-                QString str = ((line.substr(line.find("=") + 1)).c_str());
-                double val = str.toDouble();
-                pencilInventory.setTotalNumberOfPencilsProduced(val);
-                cout << val << endl;
-            }
-            if (line[0] == 'l')
-            {
-                QString str = ((line.substr(line.find("=") + 1)).c_str());
-                double val = str.toDouble();
-                woodInventory.setAmount(val);
-                cout << val << endl;
-            }
-            if (line[0] == 'm')
-            {
-                QString str = ((line.substr(line.find("=") + 1)).c_str());
-                double val = str.toDouble();
-                graphiteInventory.setAmount(val);
-                cout << val << endl;
-            }
-            if (line[0] == 'n')
-            {
-                QString str = ((line.substr(line.find("=") + 1)).c_str());
-                double val = str.toDouble();
-                apm2000Inventory.setVersion(val);
-                cout << val << endl;
-            }
-        }
-        myfile.close();
-    }
-    else cout << "Unable to open file";
 }
 
 void PencilProducer::on_quit_clicked()
@@ -701,9 +468,5 @@ void PencilProducer::on_quit_clicked()
     graphiteInventory.setAmount(1000);
     apm2000Inventory.setVersion(1);
 
-    ui->welcome->show();
-    ui->newgame->show();
-    ui->loadgame->show();
-    ui->highscores->show();
-    ui->welcomelab->show();
+    emit quitgameclicked();
 }
