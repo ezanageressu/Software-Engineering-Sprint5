@@ -1,69 +1,67 @@
 {
-    "online-references":[
-	{
+	"online-references": [{
 
-        "url":"https://wiki.qt.io/Using_CMake_build_system",
-        "contribution":"Implementing the cmake file",
-        "file":"CMakeLists.txt"
+			"url": "https://wiki.qt.io/Using_CMake_build_system",
+			"contribution": "Implementing the cmake file",
+			"file": "CMakeLists.txt"
 
-	},
-	{
-	"url":"https://doc.qt.io",
-	"contribution":"Running general functions of qt",
-	"file":"pencilproducer.cpp, pencil_inventory.cpp" 
+		},
+		{
+			"url": "https://doc.qt.io",
+			"contribution": "Running general functions of qt",
+			"file": "pencilproducer.cpp, pencil_inventory.cpp"
 
-	},
-	{
-	"url":"https://wiki.ubuntu-kr.org/index.php/GUI(QT)_Programming",
-	"contribution":"implementing Debugging tool using check box",
-	"file":"pencilproducer.cpp"
-    },
-    {
-    "file":"A section of Dragi's save and load function to help us out",
-    "contribution": "Save and load functions"
-    },
-    {
-        "url":"https://www.qtcentre.org/threads/60036-Send-JSON-amp-Key-via-HTTP-POST",
-        "contribution":"QT Post",
-        "file":"pencilproducer.cpp"
-    },
-	{
-        "url":"https://pastebin.com/FgWNaYFF",
-        "contribution":"File (.sav) creation and outputting from Dushan",
-        "file":"Save and load triggered functions"
-    }
-    ],
-    "colleagues":[
-        {
-            "jacobs-id": "g.adilbish",
-            "contribution": "Basic UI development",
-            "file": ""
-        },
-        {
-            "jacobs-id": "f.manana",
-            "contribution": "Documentation, Testing and Structure",
-            "file": ""
- 
-        },
-        {
-            "jacobs-id": "j.dayinta - Sprint 3",
-            "contribution": "Upgrading APM, Marketing, UI development Documentation, and Save and Load",
-            "file": ""
-        },
-        {
-            "jacobs-id": "m.kim - Sprint 3",
-            "contribution": "Intelligence, Debugging tool, UI development, Documentation, Testing, and Save and Load",
-            "file": ""
-        },
-{
-            "jacobs-id": "ra.shrestha - Sprint 3",
-            "contribution": "Save and Load, POST",
-            "file": ""
-        },
-{
-            "jacobs-id": "o.elbouanani - Sprint 4",
-            "contribution": "UI, GET",
-            "file": ""
-        }
-    ]
+		},
+		{
+			"url": "https://wiki.ubuntu-kr.org/index.php/GUI(QT)_Programming",
+			"contribution": "implementing Debugging tool using check box",
+			"file": "pencilproducer.cpp"
+		},
+		{
+			"file": "A section of Dragi's save and load function to help us out",
+			"contribution": "Save and load functions"
+		},
+		{
+			"url": "https://www.qtcentre.org/threads/60036-Send-JSON-amp-Key-via-HTTP-POST",
+			"contribution": "QT Post",
+			"file": "pencilproducer.cpp"
+		},
+		{
+			"url": "https://pastebin.com/FgWNaYFF",
+			"contribution": "File (.sav) creation and outputting from Dushan",
+			"file": "Save and load triggered functions"
+		}
+	],
+	"colleagues": [{
+			"jacobs-id": "g.adilbish",
+			"contribution": "Basic UI development",
+			"file": ""
+		},
+		{
+			"jacobs-id": "f.manana",
+			"contribution": "Documentation, Testing and Structure",
+			"file": ""
+
+		},
+		{
+			"jacobs-id": "j.dayinta - Sprint 3",
+			"contribution": "Upgrading APM, Marketing, UI development Documentation, and Save and Load",
+			"file": ""
+		},
+		{
+			"jacobs-id": "m.kim - Sprint 3",
+			"contribution": "Intelligence, Debugging tool, UI development, Documentation, Testing, and Save and Load",
+			"file": ""
+		},
+		{
+			"jacobs-id": "ra.shrestha - Sprint 3",
+			"contribution": "Save and Load, POST",
+			"file": ""
+		},
+		{
+			"jacobs-id": "o.elbouanani - Sprint 4",
+			"contribution": "UI, GET",
+			"file": ""
+		}
+	]
 }

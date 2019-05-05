@@ -388,14 +388,14 @@ p, li { white-space: pre-wrap; }
    <widget class="QCheckBox" name="dbt">
     <property name="geometry">
      <rect>
-      <x>370</x>
-      <y>10</y>
-      <width>87</width>
+      <x>10</x>
+      <y>470</y>
+      <width>141</width>
       <height>20</height>
      </rect>
     </property>
     <property name="text">
-     <string>DeB Tool</string>
+     <string>Debugging Tools</string>
     </property>
    </widget>
    <widget class="QPushButton" name="d1">
@@ -404,8 +404,8 @@ p, li { white-space: pre-wrap; }
     </property>
     <property name="geometry">
      <rect>
-      <x>362</x>
-      <y>30</y>
+      <x>10</x>
+      <y>510</y>
       <width>121</width>
       <height>41</height>
      </rect>
@@ -416,18 +416,18 @@ p, li { white-space: pre-wrap; }
      </font>
     </property>
     <property name="styleSheet">
-     <string notr="true">QPushButton {background-color : rgb(200, 200, 255)}
-</string>
+     <string notr="true">background-color: rgb(138, 226, 52);</string>
     </property>
     <property name="text">
-     <string>+$1000</string>
+     <string>Balance
+ +1000</string>
     </property>
    </widget>
    <widget class="QPushButton" name="d2">
     <property name="geometry">
      <rect>
-      <x>362</x>
-      <y>70</y>
+      <x>140</x>
+      <y>510</y>
       <width>121</width>
       <height>41</height>
      </rect>
@@ -438,40 +438,18 @@ p, li { white-space: pre-wrap; }
      </font>
     </property>
     <property name="styleSheet">
-     <string notr="true">QPushButton {background-color : rgb(200, 200, 255)}
-</string>
+     <string notr="true">background-color: rgb(114, 159, 207);</string>
     </property>
     <property name="text">
-     <string>+1000ps to I</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="d3">
-    <property name="geometry">
-     <rect>
-      <x>362</x>
-      <y>110</y>
-      <width>121</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>11</pointsize>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">QPushButton {background-color : rgb(200, 200, 255)}
-</string>
-    </property>
-    <property name="text">
-     <string>+1000ps to M</string>
+     <string>Pencil
+ +1000</string>
     </property>
    </widget>
    <widget class="QPushButton" name="d4">
     <property name="geometry">
      <rect>
-      <x>362</x>
-      <y>150</y>
+      <x>280</x>
+      <y>510</y>
       <width>121</width>
       <height>41</height>
      </rect>
@@ -482,11 +460,11 @@ p, li { white-space: pre-wrap; }
      </font>
     </property>
     <property name="styleSheet">
-     <string notr="true">QPushButton {background-color : rgb(200, 200, 255)}
-</string>
+     <string notr="true">background-color: rgb(233, 185, 110);</string>
     </property>
     <property name="text">
-     <string>+10m w n g</string>
+     <string>Wood: +1000 
+ Graphite: +1000</string>
     </property>
    </widget>
    <widget class="QTextBrowser" name="intelligence">
@@ -598,6 +576,105 @@ QPushButton:Pressed {background-color : transparent}</string>
      <string>Quit</string>
     </property>
    </widget>
+   <widget class="QPushButton" name="d5">
+    <property name="geometry">
+     <rect>
+      <x>410</x>
+      <y>510</y>
+      <width>101</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(78, 154, 6);</string>
+    </property>
+    <property name="text">
+     <string>Intelligence
+ +10</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="d6">
+    <property name="geometry">
+     <rect>
+      <x>530</x>
+      <y>510</y>
+      <width>101</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(117, 80, 123);</string>
+    </property>
+    <property name="text">
+     <string>Marketing
++3</string>
+    </property>
+   </widget>
+   <widget class="QWidget" name="gameover" native="true">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>682</width>
+      <height>578</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(255, 255, 255);</string>
+    </property>
+    <widget class="QLabel" name="label">
+     <property name="geometry">
+      <rect>
+       <x>250</x>
+       <y>60</y>
+       <width>211</width>
+       <height>61</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Ubuntu</family>
+       <pointsize>12</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:26pt; font-weight:600; color:#729fcf;&quot;&gt;Game Over&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="exit">
+     <property name="geometry">
+      <rect>
+       <x>280</x>
+       <y>240</y>
+       <width>121</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(252, 175, 62);</string>
+     </property>
+     <property name="text">
+      <string>Exit</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="upload">
+     <property name="geometry">
+      <rect>
+       <x>280</x>
+       <y>180</y>
+       <width>121</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(138, 226, 52);</string>
+     </property>
+     <property name="text">
+      <string>Upload Score</string>
+     </property>
+    </widget>
+   </widget>
+   <zorder>bankBalance</zorder>
    <zorder>quit</zorder>
    <zorder>textBrowser</zorder>
    <zorder>pencilsProduced</zorder>
@@ -613,19 +690,20 @@ QPushButton:Pressed {background-color : transparent}</string>
    <zorder>makePencil</zorder>
    <zorder>buyMore</zorder>
    <zorder>textOfBankBalance</zorder>
-   <zorder>bankBalance</zorder>
    <zorder>autoPencil2000</zorder>
    <zorder>rate</zorder>
    <zorder>dbt</zorder>
    <zorder>d1</zorder>
    <zorder>d2</zorder>
-   <zorder>d3</zorder>
    <zorder>d4</zorder>
    <zorder>intelligence</zorder>
    <zorder>pushButton</zorder>
    <zorder>textBuyMarketing</zorder>
    <zorder>unlockM</zorder>
    <zorder>save</zorder>
+   <zorder>d5</zorder>
+   <zorder>d6</zorder>
+   <zorder>gameover</zorder>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
  </widget>

@@ -22,7 +22,9 @@ PencilProducer::PencilProducer(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::PencilProducer)
 {
+    // setting up the UI in the beginning
     ui->setupUi(this);
+    ui->gameover->hide();
     ui->textBuyMarketing->setVisible(false);
     ui->pushButton->setVisible(false);
     ui->unlockM->setVisible(false);
@@ -45,10 +47,8 @@ PencilProducer::~PencilProducer()
     delete ui;
 }
 
-/**
- * @brief PencilProducer::update
- * updates all values displayed on the UI and
- */
+
+// updates all values displayed on the UI
 void PencilProducer::update()
 {
     QString str;
@@ -97,7 +97,7 @@ void PencilProducer::update()
     ui->buyGraphite->setText("Buy Graphite \n$" + str + " / 100.00 m");
 
     str.setNum(priceOfAPM2000, 'f', 2);
-    ui->buyMore->setText("Buy More \n$" + str);
+    ui->buyMore->setText("Buy APM \n$" + str);
 
     str.setNum(rate);
     ui->rate->setText("<html><p style=\"text-align: right\">Rate: <b>" + str + "</b> pencils / minute</p></html>");
@@ -111,6 +111,7 @@ void PencilProducer::update()
     ui->buyWood->setEnabled(woodInventory.canBuy(wallet));
     ui->buyGraphite->setEnabled(graphiteInventory.canBuy(wallet));
     ui->buyMore->setEnabled(apm2000Inventory.canBuyAPM2000(wallet));
+    ui->textBuyMarketing->setText(QString("Buy Marketing\n$ " + QString::number(pencilInventory.getMarketingPrice(),'f',2)));
 }
 
 //Begin a timer which uses the function "updateAll".
@@ -166,6 +167,11 @@ void PencilProducer::updateAll()
     static int counter = 0;
     QString str;
 
+    if (pencilInventory.getTotalNumberOfPencilsProduced() >= 25000){
+        apm2000Inventory.setNumber(0);
+        ui->gameover->show();
+    }
+
     //Produce and Sell a Pencil every one second.
     if (counter % 2 == 0)
     {
@@ -176,11 +182,22 @@ void PencilProducer::updateAll()
     {
         pencilInventory.sellPencil(wallet, pencilInventory.getNumberOfPencilsToBeSold());
         pencilInventory.changeIntelligence();
+        // if pencils > 3000, unlock marketing
         if(pencilInventory.getTotalNumberOfPencilsProduced()>=3000)
         {
             if(unlock == 0)
             {
                 ui->unlockM->setVisible(true);
+            }
+            // if already unlocked, change label to buy marketing
+            else if (unlock == 1){
+                if (wallet.getBankBalance() >= pencilInventory.getMarketingPrice()
+                        && pencilInventory.getM() < 30){
+                    ui->textBuyMarketing->setEnabled(true);
+                }
+                else{
+                    ui->textBuyMarketing->setEnabled(false);
+                }
             }
             if(pencilInventory.getIntelligence()>=100)
             {
@@ -191,8 +208,14 @@ void PencilProducer::updateAll()
                 ui->unlockM->setEnabled(false);
             }
             ui->pushButton->setVisible(true);
-            if(pencilInventory.getIntelligence()>=50)
+
+            // unlock the upgrade APM button
+            if(pencilInventory.getIntelligence() >= 50 && apm2000Inventory.getVersion() == 0)
             {
+                ui->pushButton->setEnabled(true);
+            }
+            else if (pencilInventory.getIntelligence() >= 200 && apm2000Inventory.getVersion() == 1
+                     && pencilInventory.getTotalNumberOfPencilsProduced() >= 5000){
                 ui->pushButton->setEnabled(true);
             }
             else
@@ -200,6 +223,10 @@ void PencilProducer::updateAll()
                 ui->pushButton->setEnabled(false);
             }
 
+        }
+        else{
+            ui->unlockM->setVisible(false);
+            ui->pushButton->setVisible(false);
         }
         counter = 0;
     }
@@ -216,23 +243,25 @@ void PencilProducer::updateAll()
     update();
 }
 
-
 void PencilProducer::check()
 {
-
+    // if debugging tool is not checked
     if(!ui->dbt->isChecked())
     {
         ui->d1->setVisible(false);
         ui->d2->setVisible(false);
-        ui->d3->setVisible(false);
+        ui->d5->setVisible(false);
         ui->d4->setVisible(false);
+         ui->d6->setVisible(false);
     }
+    // if debugging tool is checked
     if(ui->dbt->isChecked())
     {
         ui->d1->setVisible(true);
         ui->d2->setVisible(true);
-        ui->d3->setVisible(true);
+        ui->d5->setVisible(true);
         ui->d4->setVisible(true);
+        ui->d6->setVisible(true);
     }
 
 }
@@ -245,24 +274,20 @@ void PencilProducer::on_d1_clicked()
 
 void PencilProducer::on_d2_clicked()
 {
-    pencilInventory.setPencil(0,1000);
-}
-
-void PencilProducer::on_d3_clicked()
-{
-    pencilInventory.setPencil(1000,0);
+    pencilInventory.setPencil(1000,1000);
 }
 
 void PencilProducer::on_d4_clicked()
 {
-    woodInventory.setMaterial(10);
-    graphiteInventory.setMaterial(10);
+    woodInventory.setMaterial(1000);
+    graphiteInventory.setMaterial(1000);
 }
 
+// upgrade apm button
 void PencilProducer::on_pushButton_clicked()
 {
     apm2000Inventory.FirstUpgradeAPM(pencilInventory);
-    if(pencilInventory.getIntelligence()>200)
+    if(pencilInventory.getIntelligence() >= 200)
     {
         apm2000Inventory.SecondUpgradeAPM(pencilInventory);
     }
@@ -273,6 +298,7 @@ void PencilProducer::on_textBuyMarketing_clicked()
     pencilInventory.UpgradeMarketing(wallet);
 }
 
+// when unlock marketing is clicked
 void PencilProducer::on_unlockM_clicked()
 {
     if(pencilInventory.getIntelligence()>=100)
@@ -287,14 +313,14 @@ void PencilProducer::on_unlockM_clicked()
     }
 
 }
-///getter unlock
+// getter unlock
 int PencilProducer::getunlock()
 {
     return unlock;
 
 }
 
-///setter unlock
+// setter unlock
 void PencilProducer::setunlock()
 {
     unlock = unlock + 1;
@@ -305,11 +331,13 @@ void PencilProducer::netfuncurl(QNetworkReply *reply)
 {
     QString str;
     str = reply->readAll();
-    ///Getting the link value
+
+    // Getting the link value
     QJsonDocument jsonResponse = QJsonDocument::fromJson(str.toUtf8());
     QJsonObject jsonObject = jsonResponse.object();
     QJsonArray jsonArray = jsonObject["link"].toArray();
-    /// Appending to received URL
+
+    // Appending to received URL
     postURL = "http://";
     postURL.append(jsonObject["link"].toString()) ;
     postURL.append("/uploadscore") ;
@@ -318,6 +346,7 @@ void PencilProducer::netfuncurl(QNetworkReply *reply)
 
 void PencilProducer::on_save_clicked()
 {
+    // open a window on save button clicked
     QString fileName = QFileDialog::getSaveFileName(
             this,
             tr("Save Game"),
@@ -341,15 +370,19 @@ void PencilProducer::on_save_clicked()
             QDataStream out(&file);
             out.setVersion(QDataStream::Qt_4_5);
             QMap<QString, QString> data;
+            // save all the variables to a save file
             saveData(data);
             out << data;
         }
+    // upload score to the server
     uploadscoretoserver();
 
 }
 
+// saving all the variables
 void PencilProducer::saveData(QMap<QString, QString> &data)
 {
+    data["Game Username"] = player_name;
     data["Balance"] = QString::number(wallet.getBankBalance());
     data["Number of APM"] = QString::number(apm2000Inventory.getNumber());
     data["Rate of APM"] = QString::number(apm2000Inventory.getAPMRate());
@@ -370,11 +403,16 @@ void PencilProducer::saveData(QMap<QString, QString> &data)
 void PencilProducer::onfinish(QNetworkReply* reply)
 {
     QByteArray buffer = reply->readAll();
-    qDebug() << buffer;
+    QString a = QString(buffer);
+
+    // displaying reponse on the screen after making POST request
+    messageBox.information(0,"Server Status",QString("%1").arg(a));
 }
 
+// loading varibales from the sav file to load previous state of the game
 void PencilProducer::uploadData(const QMap<QString, QString> data)
 {
+    setplayername(data["Game Username"]);
     wallet.setBankBalance(data["Balance"].toDouble());
     apm2000Inventory.setNumber(data["Number of APM"].toDouble());
     apm2000Inventory.setAPMRate(data["Rate of APM"].toDouble());
@@ -400,19 +438,20 @@ void PencilProducer::uploadscoretoserver()
     QString game_username;
 
     int currentscore = pencilInventory.getTotalNumberOfPencilsProduced();
-    QString score = QString::number(currentscore); ///Converting integer to QString
+    QString score = QString::number(currentscore); // Converting integer to QString
     score.append("}");
 
-    ///Setting up temporary environment variables for testing. Use this to make sure
-    ///environment variables are working. ADD details inside the quotation marks
+    // Setting up temporary environment variables for testing. Use this to make sure
+    // environment variables are working. ADD details inside the quotation marks
 
     histignore = std::getenv("HISTIGNORE");
     username =  std::getenv("JACOBS_ID");
     se_token =  std::getenv("SE_TOKEN");
-    game_username = std::getenv("GAME_USERNAME");
+    game_username = player_name;
 
-    ///Combining the environment variables to send as a POST request. After combining it looks like the form below. Remove the square brackets obviously
-    ///QByteArray jsonString = "{\"jacobs-id\": \"[USERNAME]\",\"se-token\":\"[SE_TOKEN]\",\"game-username\":\"[GAME_USERNAME]\",\"score\": [SCORE]}";
+    // Combining the environment variables to send as a POST request. After combining it looks like the form below.
+    // Remove the square brackets obviously
+    // QByteArray jsonString = "{\"jacobs-id\": \"[USERNAME]\",\"se-token\":\"[SE_TOKEN]\",\"game-username\":\"[GAME_USERNAME]\",\"score\": [SCORE]}";
 
     QString a = username;
     QString b = "\",\"se-token\":\"";
@@ -431,8 +470,6 @@ void PencilProducer::uploadscoretoserver()
     jsonString.append(f);
     jsonString.append(g);
 
-    qDebug()<< "String: " << jsonString << endl;
-
     // For your "Content-Length" header
     QByteArray postDataSize = QByteArray::number(jsonString.size());
 
@@ -440,7 +477,8 @@ void PencilProducer::uploadscoretoserver()
     QUrl serviceURL(postURL);
     QNetworkRequest request(serviceURL);
 
-    // Add the headers specifying their names and their values with the following method : void QNetworkRequest::setRawHeader(const QByteArray & headerName, const QByteArray & headerValue);
+    // Add the headers specifying their names and their values with the following method :
+    // void QNetworkRequest::setRawHeader(const QByteArray & headerName, const QByteArray & headerValue);
     request.setRawHeader("Content-Type", "application/json");
     request.setRawHeader("Content-Length", postDataSize);
 
@@ -451,8 +489,14 @@ void PencilProducer::uploadscoretoserver()
 
 }
 
+void PencilProducer::setplayername(QString name)
+{
+    player_name = name;
+}
+
 void PencilProducer::on_quit_clicked()
 {
+    // reset all the values when quit game is clicked
     wallet.setBankBalance(145);
     apm2000Inventory.setNumber(0);
     apm2000Inventory.setAPMRate(0);
@@ -466,7 +510,33 @@ void PencilProducer::on_quit_clicked()
     pencilInventory.setTotalNumberOfPencilsProduced(0);
     woodInventory.setAmount(1000);
     graphiteInventory.setAmount(1000);
-    apm2000Inventory.setVersion(1);
+    apm2000Inventory.setVersion(0);
+    unlock = 0;
 
+    // emit signal which takes back to welcome screen
     emit quitgameclicked();
+}
+
+void PencilProducer::on_d5_clicked()
+{
+    pencilInventory.increaseIntelligence(10);
+}
+
+
+void PencilProducer::on_d6_clicked()
+{
+     pencilInventory.increasemarketing(3);
+}
+
+// SLOT handler of the button in the game over view
+void PencilProducer::on_exit_clicked()
+{
+    on_quit_clicked();
+    ui->gameover->hide();
+}
+
+
+void PencilProducer::on_upload_clicked()
+{
+    uploadscoretoserver();
 }

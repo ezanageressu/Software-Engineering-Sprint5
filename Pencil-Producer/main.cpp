@@ -8,7 +8,7 @@
   * pencils respectively.
   * @section compile_sec Compilation
   * \code
-  * $ cd se-03-team/Pencil-Producer/
+  * $ cd se-05-team-09/Pencil-Producer/
   *
   * $ mkdir build
   *
@@ -22,7 +22,6 @@
 
 #include "welcomescreen.h"
 #include <QApplication>
-//#include <QNetworkAccessManager>
 
 
 /**

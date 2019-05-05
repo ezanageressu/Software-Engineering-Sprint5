@@ -19,7 +19,7 @@ class Pencil_Inventory
 public:
     Pencil_Inventory();
 
-    /// getter methods
+    // getter methods
     float getPrice() const;
     int getAmount() const;
     float getPublicDemand() const;
@@ -28,32 +28,34 @@ public:
     int getIntelligence() const;
     float getM() const;
     float getMarketingPrice();
-    ///setter methods for debuging tool
+    // setter methods for debuging tool
     void setPencil(int n, int m);
     void setIntelligence(int n);
-    ///bool checking method for Intelligence
+    void increasemarketing(int m);
+    void increaseIntelligence(int n);
+    // bool checking method for Intelligence
     bool checkIntelligence(int m);
 
-    ///setter functions
+    // setter functions
     void setPrice(float);
     void setAmount(float);
     void setTotalNumberOfPencilsProduced(float);
     void setM(float);
     void setMarketingPrice(float);
 
-    ///change price
+    // change price
     void increasePrice();
     void decreasePrice();
     bool canDecreasePrice() const;
     void changeIntelligence();
 
-    ///sell and produce pencils
+    // sell and produce pencils
     void sellPencil(Wallet&, int n = 1);
     bool canSellPencil(int n = 1) const;
     void producePencil(Graphite_Inventory&, Wood_Inventory&, float n = 1.00);
     bool canProducePencil(Graphite_Inventory&, Wood_Inventory&, float n = 1) const;
 
-    /// upgrade marketing
+    // upgrade marketing
     void UpgradeMarketing(Wallet&);
 
 
@@ -63,17 +65,34 @@ private:
      * Default value set to $0.05
      */
     const float change = 0.05f;
-    /// the price of a pencil
+
+    /**
+     * @brief the price of a pencil
+     */
     float price;
-    /// the number of pencils in the inventory
+    /**
+     * @brief the number of pencils in the inventory
+     */
     int amount;
-    /// the total number fo pencils produced
+
+    /**
+     * @brief the total number fo pencils produced
+     */
     int totalNumberOfPencilsProduced;
-    /// new value Intelligence
+
+    /**
+     * @brief new value Intelligence
+     */
     int Intelligence = 0;
-    /// new value Marketing
+
+    /**
+     * @brief new value Marketing
+     */
     float M =0;
-    /// price of Marketing
+
+    /**
+     * @brief price of Marketing
+     */
     float marketing_price = 500;
 };
 

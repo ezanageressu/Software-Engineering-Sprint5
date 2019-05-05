@@ -67,53 +67,95 @@ bool APM2000_Inventory::canProducePencil(Pencil_Inventory& pencilInventory,
     return pencilInventory.canProducePencil(graphiteInventory, woodInventory, (2 * apmrate * number));
 }
 
-/// returns number of APMs in inventory
+/**
+ * @brief method to get number of APMs in inventory
+ * @return returns number of APMs in inventory
+ */
 int APM2000_Inventory::getNumber() const
 {
     return number;
 }
 
-/// returns price of APM
+/**
+ * @brief method to get APM price
+ * @return returns price of APM
+ */
 float APM2000_Inventory::getPrice() const
 {
     return price;
 }
 
-/// return apmrate
+/**
+ * @brief method to get pencil production per minute
+ * @return returns pencil production per minute
+ */
 float APM2000_Inventory::getRate() const
 {
     return number * 120 * apmrate;
 }
 
-//return actual apmrate
+/**
+ * @brief method to get rate of pencil production
+ * @return returns rate of pencil production
+ */
 float APM2000_Inventory::getAPMRate() const
 {
   return apmrate;
 }
 
-/// return price of intelligence
+/**
+ * @brief method to get intelligence price
+ * @return returns price of intelligence
+ */
 float APM2000_Inventory::getIntelligencePrice() const
 {
     return intelligence_price;
 }
 
+/**
+ * @brief method to get APM version
+ * @return returns version of APM
+ */
 float APM2000_Inventory::getVersion() const{
   return version;
 }
 
-///Setter functions
+/**
+ * @brief method to set number of APMs
+ * @param sets number of APM to newnumber
+ */
 void APM2000_Inventory::setNumber(float newnumber){
     number = newnumber;
 }
+
+/**
+ * @brief method to set price of APM
+ * @param sets price of APM to newprice
+ */
 void APM2000_Inventory::setPrice(float newprice){
     price = newprice;
 }
+
+/**
+ * @brief method to set intelligence price
+ * @param sets intelligence price to newIntelligencePrice
+ */
 void APM2000_Inventory::setIntelligencePrice(float newIntelligencePrice){
     intelligence_price = newIntelligencePrice;
 }
+
+/**
+ * @brief method to set APM rate
+ * @param sets APM rate to newrate
+ */
 void APM2000_Inventory::setAPMRate(float newrate){
     apmrate = newrate;
 }
+
+/**
+ * @brief method to set version to APM
+ * @param sets APM version to newversion
+ */
 void APM2000_Inventory::setVersion(float newversion){
     version = newversion;
 }
@@ -139,7 +181,7 @@ bool APM2000_Inventory::FirstCanUpgradeAPM(Pencil_Inventory& pencil)
  */
 bool APM2000_Inventory::SecondCanUpgradeAPM(Pencil_Inventory& pencil)
 {
-    return (pencil.getTotalNumberOfPencilsProduced() == 5000);
+    return (pencil.getTotalNumberOfPencilsProduced() >= 5000);
 }
 
 /**
@@ -167,13 +209,13 @@ void APM2000_Inventory::FirstUpgradeAPM(Pencil_Inventory& pencil){
  */
 void APM2000_Inventory::SecondUpgradeAPM(Pencil_Inventory & pencil){
     int  balance;
-    if(SecondCanUpgradeAPM(pencil)&&version == 1){
+    if(SecondCanUpgradeAPM(pencil) && version == 1){
         max++;
         apmrate *= 1.1;
         intelligence_price = 200;
         balance = pencil.getIntelligence();
         balance -= intelligence_price;
         pencil.setIntelligence(balance);
-        version =2;
+        version = 2;
     }
 }

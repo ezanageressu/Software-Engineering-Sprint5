@@ -17,7 +17,9 @@ public:
     bool canCreditMoney(float) const;
     bool canDebitMoney(float) const;
 private:
-    /// bank balance. Default value set to $145.00
+    /**
+     * @brief bank balance. Default value set to $145.00
+     */
     float bankBalance;
 
 };

@@ -9,6 +9,7 @@
 #include <vector>
 #include <QtNetwork>
 
+
 using namespace std;
 
 namespace Ui {
@@ -27,6 +28,9 @@ public:
      */
     explicit Scoreboard(QWidget *parent = nullptr);
 
+    /**
+     * @brief function to make get request to the server to get scores
+     */
     void on_highscores_clicked();
 
     /**
@@ -41,8 +45,16 @@ private slots:
      */
     void on_goback_clicked();
 
+    /**
+     * @brief function to get link to the server
+     * @param reply is the data we get after making GET request
+     */
     void netfuncurl(QNetworkReply *reply);
 
+    /**
+     * @brief function to get high scores from the server and present them in UI
+     * @param reply is the data we get after making GET request
+     */
     void netfunc(QNetworkReply *reply);
 
 private:
@@ -51,6 +63,9 @@ private:
      */
     Ui::Scoreboard *ui;
 
+    /**
+     * @brief URL to get high scores
+     */
     QString myURL;
 
 signals:

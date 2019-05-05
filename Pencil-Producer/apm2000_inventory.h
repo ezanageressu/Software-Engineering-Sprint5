@@ -41,17 +41,35 @@ public:
     void setVersion(float);
 
 private:
-    /// maximum number of APMs allowed
+    /**
+     * @brief maximum number of APMs allowed
+     */
     int max = 10;
-    /// number of APMs in your inventory
+
+    /**
+     * @brief number of APMs in your inventory
+     */
     int number;
+
+    /**
+     * @brief rate of pencil production
+     */
     float apmrate = 1.00;
-    /// price of APM
+
+    /**
+     * @brief price of APM
+     */
     float price;
-    /// price of intelligence
+
+    /**
+     * @brief price of intelligence
+     */
     int intelligence_price;
-    ///version of Upgrade
-    int version;
+
+    /**
+     * @brief version of Upgrade
+     */
+    int version = 0;
 };
 
 #endif // APM2000_INVENTORY_H

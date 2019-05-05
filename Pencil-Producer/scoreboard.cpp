@@ -29,7 +29,7 @@ Scoreboard::~Scoreboard()
 
 void Scoreboard::on_highscores_clicked()
 {
-    //Connecting the function to get the data from the file
+    //Connecting the function to get the scores from the server
     QNetworkAccessManager *score = new QNetworkAccessManager(this);
     connect(score, &QNetworkAccessManager::finished, this, &Scoreboard::netfunc);
     const QUrl url = QUrl(myURL);
@@ -42,11 +42,13 @@ void Scoreboard::netfuncurl(QNetworkReply *reply)
 {
     QString str;
     str = reply->readAll();
-    ///Getting the link value
+
+    // Getting the link value
     QJsonDocument jsonResponse = QJsonDocument::fromJson(str.toUtf8());
     QJsonObject jsonObject = jsonResponse.object();
     QJsonArray jsonArray = jsonObject["link"].toArray();
-    /// Appending to received URL
+
+    // Appending to received URL
     myURL = "http://";
     myURL.append(jsonObject["link"].toString()) ;
     myURL.append("/getscores") ;
@@ -57,31 +59,32 @@ void Scoreboard::netfunc(QNetworkReply *reply)
 {
     QString str;
     str = reply->readAll();
+    QString username[10] = {""};
+    QString score[10] = {""};
 
-    if(str.isEmpty()==true){
-        qDebug() << "Error no data found";
-        exit(1);
-    }
-
+    // getting the high scores
     QJsonDocument jsonResponse = QJsonDocument::fromJson(str.toUtf8());
     QJsonObject jsonObject = jsonResponse.object();
     QJsonArray jsonArray = jsonObject["highscores"].toArray();
-    QString username[10] = {""};
-    QString score[10] = {""};
+
     vector< pair <int,QString> > vect;
     foreach (const QJsonValue & value, jsonArray){
         QJsonObject obj = value.toObject();
+        // putting scores and username in vector as a pair
         vect.push_back(make_pair(obj["score"].toInt(),obj["game-username"].toString()));
     }
+    // sorting the high scores
     sort(vect.begin(), vect.end());
     int vect_size = vect.size();
     int j = 9;
+    // converting vector data to QString to present them in UI
     for (int i = vect_size - 1; i >= 0; i--) {
         QString bn = QString::number(vect[i].first);
         username[j] = QString("%1").arg(vect[i].second);
         score[j] = QString("%1").arg(bn);
         j = j - 1;
     }
+    // Presenting the scores in the UI
     ui->user0->setText(username[9]);
     ui->score0->setText(score[9]);
     ui->user1->setText(username[8]);

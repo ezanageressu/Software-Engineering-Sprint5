@@ -25,14 +25,24 @@ public:
 
     void setAmount(float);
 private:
-    /// price of 100.00m of material
+    /**
+     * @brief price of 100.00m of material
+     */
     float price;
-    /// amount of material in inventory
+    /**
+     * @brief amount of material in inventory
+     */
     float amount;
-    /// the minimum price of the material
+    /**
+     * @brief the minimum price of the material
+     */
     float minPrice;
+
+    /**
+     * @brief change represents the amount of wood or graphite that should be
+     * deducted from the inventory when a pencil is made
+     */
     float change;
-    ///setter for debuging tool
 
 
 };

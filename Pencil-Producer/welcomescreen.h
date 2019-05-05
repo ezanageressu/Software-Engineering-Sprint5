@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include "pencilproducer.h"
 #include "scoreboard.h"
+#include <QInputDialog>
 
 namespace Ui {
 class MainWindow;
@@ -50,6 +51,11 @@ private slots:
      */
     void on_highscore_clicked();
 
+    /**
+     * @brief SLOT handler for the delete player button
+     */
+    void on_deleteplayer_clicked();
+
 private:
     /**
      * @brief pointer to UI
@@ -65,6 +71,12 @@ private:
      * @brief object of Scoreboad class
      */
     Scoreboard score;
+
+    /**
+     * @brief object of QMessageBox to display errors
+     */
+    QMessageBox messageBox;
+
 };
 
 #endif // MAINWINDOW_H

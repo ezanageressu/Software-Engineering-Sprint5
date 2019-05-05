@@ -15,59 +15,97 @@ Pencil_Inventory::Pencil_Inventory()
     totalNumberOfPencilsProduced = 0;
 }
 
-/// returns the price of a pencil
+/**
+ * @brief function to get price of pencil
+ * @return returns the price of a pencil
+ */
 float Pencil_Inventory::getPrice() const
 {
     return price;
 }
 
-/// returns the number of pencils in inventory
+/**
+ * @brief function to get amount of pencils in the inventory
+ * @return returns the number of pencils in inventory
+ */
 int Pencil_Inventory::getAmount() const
 {
     return amount;
 }
 
-/// returns the public demand of pencils
+/**
+ * @brief function to get rate of public demand
+ * @return returns the public demand of pencils
+ */
 float Pencil_Inventory::getPublicDemand() const
 {
     return (round(100 * std::pow(1.1f,M)/ price)) / 100.0f;
 }
 
-/// returns the total number of pencils produced
+/**
+ * @brief function to get total number of pencils produced
+ * @return returns the total number of pencils produced
+ */
 int Pencil_Inventory::getTotalNumberOfPencilsProduced() const
 {
     return totalNumberOfPencilsProduced;
 }
 
+/**
+ * @brief function to get total number of pencils to be sold per second
+ * @return total number of pencils that should be sold
+ */
 int Pencil_Inventory::getNumberOfPencilsToBeSold() const
 {
     return std::min(static_cast<int>(floor(5 * getPublicDemand())), amount);
 }
 
+/**
+ * @brief function to get intelligence
+ * @return number of intelligence
+ */
 int Pencil_Inventory::getIntelligence() const
 {
     return Intelligence;
 }
 
-///Setter functions
+/**
+ * @brief function to set price of the pencil
+ * @param sets price of pencil to newprice
+ */
 
 void Pencil_Inventory::setPrice(float newprice){
   price = newprice;
 }
 
+/**
+ * @brief function to set pencils in the inventory
+ * @param sets pencils in the inventory to newamount
+ */
 void Pencil_Inventory::setAmount(float newamount){
   amount = newamount;
 }
 
+/**
+ * @brief function to set total number of pencils produced
+ * @param sets total number of pencils produced to newtotal
+ */
 void Pencil_Inventory::setTotalNumberOfPencilsProduced(float newtotal){
   totalNumberOfPencilsProduced = newtotal;
 }
 
-
+/**
+ * @brief function to set marketing value
+ * @param sets marketing value to newM
+ */
 void Pencil_Inventory::setM(float newM){
   M = newM;
 }
 
+/**
+ * @brief function to set marketing price
+ * @param sets marketing price to newmarketingprice
+ */
 void Pencil_Inventory::setMarketingPrice(float newmarketingprice){
   marketing_price = newmarketingprice;
 }
@@ -120,7 +158,11 @@ void Pencil_Inventory::sellPencil(Wallet& w, int n)
     }
 }
 
-/// returns true if there are pencils to sell, false otherwise
+/**
+ * @brief function to check whether we can sell pencil
+ * @param checks if amount is greater than n
+ * @return returns true if there are pencils to sell, false otherwise
+ */
 bool Pencil_Inventory::canSellPencil(int n) const
 {
     return (amount >= n);
@@ -146,27 +188,43 @@ void Pencil_Inventory::producePencil(Graphite_Inventory& graphiteInventory, Wood
     }
 }
 
-/// returns true if there is enough material to produce n pencils, false otherwise
+/**
+ * @brief function to check whether pencils can be made or not
+ * @param checks if there is enough graphite in the graphiteInventory
+ * @param checks if there is enough wood in the woodInventory
+ * @param n is the required wood and graphite to make pencil
+ * @return returns true if we can make pencil, false otherwise
+ */
 bool Pencil_Inventory::canProducePencil(Graphite_Inventory& graphiteInventory, Wood_Inventory& woodInventory, float n) const
 {
     return (graphiteInventory.canConsume(n) && woodInventory.canConsume(n));
 }
 
-///setter for pencil
+/**
+ * @brief function to increase total pencils produced and pencils in the inventory
+ * @param increases total number of pencils produced by n
+ * @param increases pencils in the inventory by m
+ */
 void Pencil_Inventory::setPencil(int n,int m)
 {
     totalNumberOfPencilsProduced += n;
     amount = amount + m;
 }
 
-/// increase Intelligence by one
+/**
+ * @brief function to increase intelligence by 1
+ */
 void Pencil_Inventory::changeIntelligence()
 {
     if(totalNumberOfPencilsProduced>=3000 && Intelligence <200)
         Intelligence += 1;
 }
 
-/// check if user have enough Intelligence
+/**
+ * @brief function to check whether we have intelligence
+ * @param checks if we have intelligence greater than m
+ * @return returns true if the condition is met, false otherwise
+ */
 bool Pencil_Inventory::checkIntelligence(int m)
 {
     if(Intelligence > m){
@@ -178,9 +236,12 @@ bool Pencil_Inventory::checkIntelligence(int m)
 
 }
 
-/// setter for Intelligence
+/**
+ * @brief function to set intelligence
+ * @param sets intelligence to n
+ */
 void Pencil_Inventory::setIntelligence(int n){
-    if(n > 200){
+    if(Intelligence > 200){
         Intelligence = 200;
     }
     else{
@@ -189,13 +250,44 @@ void Pencil_Inventory::setIntelligence(int n){
 
 }
 
+/**
+ * @brief function to increase marketing
+ * @param increases marketing by m
+ */
+void Pencil_Inventory::increasemarketing(int m)
+{
+    M += m;
+    if(M > 30){
+        M = 30;
+    }
 
-/// getter for Marketing
+}
+
+/**
+ * @brief function to increase intelligence
+ * @param increases intelligence by n
+ */
+void Pencil_Inventory::increaseIntelligence(int n)
+{
+    Intelligence += n;
+    if(Intelligence > 200){
+        Intelligence = 200;
+    }
+}
+
+
+/**
+ * @brief function to get marketing value
+ * @return returns number of marketing
+ */
 float Pencil_Inventory::getM() const{
     return M;
 }
 
-/// getter for Marketing price
+/**
+ * @brief function to get marketing price
+ * @return returns marketing price
+ */
 float Pencil_Inventory::getMarketingPrice()
 {
     return marketing_price;
@@ -209,7 +301,7 @@ float Pencil_Inventory::getMarketingPrice()
  * @param wallet
  */
 void Pencil_Inventory::UpgradeMarketing(Wallet& wallet){
-    if(wallet.canDebitMoney(marketing_price)){
+    if(wallet.canDebitMoney(marketing_price) && M < 30){
         wallet.debitMoney(marketing_price);
         M++;
         marketing_price *= 1.1;

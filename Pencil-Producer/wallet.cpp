@@ -17,6 +17,10 @@ float Wallet::getBankBalance() const
     return bankBalance;
 }
 
+/**
+ * @brief function to set bank balance
+ * @param sets bank balance to newBankBalance
+ */
 void Wallet::setBankBalance(float newBankBalance){
   this->bankBalance = newBankBalance;
 }
