@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.15"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Pencil Producer: Pencil Producer</title>
+<title>Pencil Producer: Pencil Producer Documentation</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -62,15 +62,37 @@ $(function() {
 
 <div class="PageDoc"><div class="header">
   <div class="headertitle">
-<div class="title">Pencil Producer </div>  </div>
+<div class="title">Pencil Producer Documentation </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><h1><a class="anchor" id="intro_sec"></a>
-Introduction</h1>
-<p>This project implements a pencil producer game where the player can produce and sell pencils to the public. In order to produce pencils the player must buy materials (wood, graphite). The player can increase and decrease the price of pencils at any point, which decreases and increases the demand for pencils respectively. </p>
-<h1><a class="anchor" id="compile_sec"></a>
-Compilation</h1>
-<div class="fragment"><div class="line">$ cd se-05-team-09/Pencil-Producer/</div><div class="line"></div><div class="line">$ mkdir build</div><div class="line"></div><div class="line">$ cd build/</div><div class="line"></div><div class="line">$ cmake .. &amp; make</div><div class="line"></div><div class="line">$ ./pencilproducer</div></div><!-- fragment --> </div></div><!-- PageDoc -->
+<div class="textblock"><p>You are now in charge of creating a system that would efficiently produce and sell pencils, with the ultimate goal of making sure everyone on the planet (or the galaxy) has enough pencils forever.</p>
+<h1><a class="anchor" id="s"></a>
+Getting Started</h1>
+<p>These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.</p>
+<h1><a class="anchor" id="p"></a>
+Prerequisites</h1>
+<p>What things you need to install the software and how to install them</p>
+<ul>
+<li>GNU C++: <a href="https://gcc.gnu.org/install/">https://gcc.gnu.org/install/</a></li>
+<li>Qt: <a href="https://www.qt.io/download">https://www.qt.io/download</a></li>
+<li>NetBeans: <a href="https://netbeans.org/downloads/8.2/">https://netbeans.org/downloads/8.2/</a> (be sure to use version 8.x as version 9 and upwards no longer support C++)</li>
+<li>CMake: <a href="https://cmake.org/install">https://cmake.org/install</a></li>
+<li>Doxygen: <a href="https://sourceforge.net/projects/doxygen/">https://sourceforge.net/projects/doxygen/</a></li>
+</ul>
+<h1><a class="anchor" id="i"></a>
+Installing</h1>
+<p>A step by step series of examples that tell you how to get a development env running</p>
+<p>Place the following step into terminal to build the project. </p><div class="fragment"><div class="line">$ mkdir build</div><div class="line">$ cd build</div><div class="line">$ cmake .. &amp;&amp; make</div></div><!-- fragment --><p>You can now make the project </p><div class="fragment"><div class="line">$ ./pencilproducer</div></div><!-- fragment --><h1><a class="anchor" id="t"></a>
+Testing</h1>
+<p>Test cases can be found in: </p><div class="fragment"><div class="line">$ Test/tst_test.cpp</div></div><!-- fragment --><p>To build test cases, run the following commands in the terminal. </p><div class="fragment"><div class="line">$ cd Test/</div><div class="line">$ mkdir build/</div><div class="line">$ cd build/</div><div class="line">$ cmake .. &amp;&amp; make</div><div class="line">$ ./testpencils</div></div><!-- fragment --><h1><a class="anchor" id="b"></a>
+Built With</h1>
+<ul>
+<li><a href="qt.io">QT5</a> - The GUI framework used</li>
+<li><a href="https://cmake.org">Cmake</a> - Dependency Management</li>
+<li><a href="http://www.doxygen.nl">Doxygen</a> - Used to generate docs</li>
+<li><a href="https://doc.qt.io/qt-5.9/qttest-index.html">QT Test</a> - Used to generate unit tests </li>
+</ul>
+</div></div><!-- PageDoc -->
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
