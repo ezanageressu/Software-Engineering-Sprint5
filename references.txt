@@ -18,10 +18,6 @@
 			"file": "pencilproducer.cpp"
 		},
 		{
-			"file": "A section of Dragi's save and load function to help us out",
-			"contribution": "Save and load functions"
-		},
-		{
 			"url": "https://www.qtcentre.org/threads/60036-Send-JSON-amp-Key-via-HTTP-POST",
 			"contribution": "QT Post",
 			"file": "pencilproducer.cpp"
@@ -30,6 +26,16 @@
 			"url": "https://pastebin.com/FgWNaYFF",
 			"contribution": "File (.sav) creation and outputting from Dushan",
 			"file": "Save and load triggered functions"
+		},
+		{
+			"url": "https://doc.qt.io/qt-5/qmessagebox.html",
+			"contribution": "Idea on how to implement qmessagebox to display error messages",
+			"file": "pencilproducer.cpp, welcomescreen.cpp"
+		},
+		{
+			"url": "https://doc.qt.io/archives/qt-4.8/qstackedwidget.html",
+			"contribution": "Idea on how to implement qstackedwidget for adding different views",
+			"file": "pencilproducer.cpp, welcomescreen.cpp, scoreboard.cpp"
 		}
 	],
 	"colleagues": [{
@@ -62,6 +68,16 @@
 			"jacobs-id": "o.elbouanani - Sprint 4",
 			"contribution": "UI, GET",
 			"file": ""
+		},
+		{
+			"jacobs-id": "d.kamov@jacobs-university.de"
+			"contribution": "Save and load functions",
+			"file": "A section of Dragi's save and load function to help us out"
+		},
+		{
+			"jacobs-id": "an.bhattarai@jacobs-university.de",
+			"contribution": "took a snippet of code for welcomescreen and scoreboard from my previous sprint i.e sprint 4 for sprint 5",
+			"file": "welcomescreen.h, welcomescreen.cpp, scoreboard.h, scoreboard.cpp"
 		}
 	]
 }

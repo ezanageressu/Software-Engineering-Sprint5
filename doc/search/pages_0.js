@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['pencil_20producer',['Pencil Producer',['../index.html',1,'']]]
+  ['pencil_20producer_20documentation',['Pencil Producer Documentation',['../index.html',1,'']]]
 ];

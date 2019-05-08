@@ -1,0 +1,64 @@
+/*! \mainpage Pencil Producer Documentation
+ * You are now in charge of creating a system that would efficiently produce and sell pencils, with the ultimate goal of making sure
+ * everyone on the planet (or the galaxy) has enough pencils forever.
+ *
+ * \section s Getting Started
+ *
+ * These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
+ *
+ * \section p Prerequisites
+ *
+ * What things you need to install the software and how to install them
+ *
+ *- GNU C++: https://gcc.gnu.org/install/
+ *
+ *- Qt: https://www.qt.io/download
+ *
+ *- NetBeans: https://netbeans.org/downloads/8.2/ (be sure to use version 8.x as version 9 and upwards no longer support C++)
+ *
+ *- CMake: https://cmake.org/install
+ *
+ *- Doxygen: https://sourceforge.net/projects/doxygen/
+ *
+ * \section i Installing
+ *
+ * A step by step series of examples that tell you how to get a development env running
+ *
+ * Place the following step into terminal to build the project.
+ * \code
+ * $ mkdir build
+ * $ cd build
+ * $ cmake .. && make
+ * \endcode
+ *
+ * You can now make the project
+ * \code
+ * $ ./pencilproducer
+ * \endcode
+ *
+ * \section t Testing
+ *
+ * Test cases can be found in:
+ * \code
+ * $ Test/tst_test.cpp
+ * \endcode
+ *
+ * To build test cases, run the following commands in the terminal.
+ * \code
+ * $ cd Test/
+ * $ mkdir build/
+ * $ cd build/
+ * $ cmake .. && make
+ * $ ./testpencils
+ * \endcode
+ *
+ * \section b Built With
+ * 
+ *- [QT5](qt.io) - The GUI framework used
+ *
+ *- [Cmake](https://cmake.org) - Dependency Management
+ *
+ *- [Doxygen](http://www.doxygen.nl) - Used to generate docs
+ *
+ *- [QT Test](https://doc.qt.io/qt-5.9/qttest-index.html) - Used to generate unit tests
+ */
