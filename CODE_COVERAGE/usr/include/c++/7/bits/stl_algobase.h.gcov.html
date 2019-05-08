@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2019-05-08 15:27:46</td>
+            <td class="headerValue">2019-05-08 15:57:00</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">1</td>
@@ -254,14 +254,14 @@
 <span class="lineNum">     192 </span>            :   template&lt;typename _Tp&gt;
 <a name="193"><span class="lineNum">     193 </span>            :     _GLIBCXX14_CONSTEXPR</a>
 <span class="lineNum">     194 </span>            :     inline const _Tp&amp;
-<span class="lineNum">     195 </span><span class="lineCov">         12 :     min(const _Tp&amp; __a, const _Tp&amp; __b)</span>
+<span class="lineNum">     195 </span><span class="lineCov">         11 :     min(const _Tp&amp; __a, const _Tp&amp; __b)</span>
 <span class="lineNum">     196 </span>            :     {
 <span class="lineNum">     197 </span>            :       // concept requirements
 <span class="lineNum">     198 </span>            :       __glibcxx_function_requires(_LessThanComparableConcept&lt;_Tp&gt;)
 <span class="lineNum">     199 </span>            :       //return __b &lt; __a ? __b : __a;
-<span class="lineNum">     200 </span><span class="lineCov">         12 :       if (__b &lt; __a)</span>
+<span class="lineNum">     200 </span><span class="lineCov">         11 :       if (__b &lt; __a)</span>
 <span class="lineNum">     201 </span><span class="lineNoCov">          0 :         return __b;</span>
-<span class="lineNum">     202 </span><span class="lineCov">         12 :       return __a;</span>
+<span class="lineNum">     202 </span><span class="lineCov">         11 :       return __a;</span>
 <span class="lineNum">     203 </span>            :     }
 <span class="lineNum">     204 </span>            : 
 <span class="lineNum">     205 </span>            :   /**

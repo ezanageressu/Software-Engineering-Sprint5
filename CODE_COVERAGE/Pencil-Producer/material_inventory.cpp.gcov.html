@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2019-05-08 15:27:46</td>
+            <td class="headerValue">2019-05-08 15:57:00</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">10</td>
@@ -67,14 +67,14 @@
 <span class="lineNum">       5 </span>            :  * @param minPrice represents the minimum price of wood or graphite
 <a name="6"><span class="lineNum">       6 </span>            :  * @param change is 0.20m for graphite and 0.21m for wood per pencil</a>
 <span class="lineNum">       7 </span>            :  */
-<span class="lineNum">       8 </span><span class="lineCov">        156 : Material_Inventory::Material_Inventory(float minPrice, float change)</span>
+<span class="lineNum">       8 </span><span class="lineCov">        132 : Material_Inventory::Material_Inventory(float minPrice, float change)</span>
 <span class="lineNum">       9 </span>            : {
-<span class="lineNum">      10 </span><span class="lineCov">        156 :     srand(time(0));</span>
-<span class="lineNum">      11 </span><span class="lineCov">        156 :     this-&gt;minPrice = minPrice;</span>
-<span class="lineNum">      12 </span><span class="lineCov">        156 :     this-&gt;change = change;</span>
-<span class="lineNum">      13 </span><span class="lineCov">        156 :     setPrice();</span>
-<span class="lineNum">      14 </span><span class="lineCov">        156 :     amount = 1000.0f;</span>
-<span class="lineNum">      15 </span><span class="lineCov">        156 : }</span>
+<span class="lineNum">      10 </span><span class="lineCov">        132 :     srand(time(0));</span>
+<span class="lineNum">      11 </span><span class="lineCov">        132 :     this-&gt;minPrice = minPrice;</span>
+<span class="lineNum">      12 </span><span class="lineCov">        132 :     this-&gt;change = change;</span>
+<span class="lineNum">      13 </span><span class="lineCov">        132 :     setPrice();</span>
+<span class="lineNum">      14 </span><span class="lineCov">        132 :     amount = 1000.0f;</span>
+<span class="lineNum">      15 </span><span class="lineCov">        132 : }</span>
 <span class="lineNum">      16 </span>            : 
 <span class="lineNum">      17 </span>            : /**
 <span class="lineNum">      18 </span>            :  * @brief Material_Inventory::buy
@@ -82,14 +82,14 @@
 <span class="lineNum">      20 </span>            :  * in inventory by 100.00m and debit bank balance.
 <a name="21"><span class="lineNum">      21 </span>            :  * @param wallet</a>
 <span class="lineNum">      22 </span>            :  */
-<span class="lineNum">      23 </span><span class="lineCov">         52 : void Material_Inventory::buy(Wallet&amp; wallet)</span>
+<span class="lineNum">      23 </span><span class="lineCov">         44 : void Material_Inventory::buy(Wallet&amp; wallet)</span>
 <span class="lineNum">      24 </span>            : {
-<span class="lineNum">      25 </span><span class="lineCov">         52 :     if (canBuy(wallet))</span>
+<span class="lineNum">      25 </span><span class="lineCov">         44 :     if (canBuy(wallet))</span>
 <span class="lineNum">      26 </span>            :     {
-<span class="lineNum">      27 </span><span class="lineCov">         26 :         amount += 100.0f;</span>
-<span class="lineNum">      28 </span><span class="lineCov">         26 :         wallet.debitMoney(price);</span>
+<span class="lineNum">      27 </span><span class="lineCov">         22 :         amount += 100.0f;</span>
+<span class="lineNum">      28 </span><span class="lineCov">         22 :         wallet.debitMoney(price);</span>
 <span class="lineNum">      29 </span>            :     }
-<span class="lineNum">      30 </span><span class="lineCov">         52 : }</span>
+<span class="lineNum">      30 </span><span class="lineCov">         44 : }</span>
 <span class="lineNum">      31 </span>            : 
 <span class="lineNum">      32 </span>            : /**
 <span class="lineNum">      33 </span>            :  * @brief function to check whether we can buy wood or graphite
@@ -97,45 +97,45 @@
 <span class="lineNum">      35 </span>            :  * @return returns true if the bank balance is greater or equal to the price of the material,
 <a name="36"><span class="lineNum">      36 </span>            :  * false otherwise</a>
 <span class="lineNum">      37 </span>            :  */
-<span class="lineNum">      38 </span><span class="lineCov">         52 : bool Material_Inventory::canBuy(Wallet&amp; wallet) const</span>
+<span class="lineNum">      38 </span><span class="lineCov">         44 : bool Material_Inventory::canBuy(Wallet&amp; wallet) const</span>
 <span class="lineNum">      39 </span>            : {
-<span class="lineNum">      40 </span><span class="lineCov">         52 :     float bankBalance = wallet.getBankBalance();</span>
-<span class="lineNum">      41 </span><span class="lineCov">         52 :     return (bankBalance &gt;= price);</span>
+<span class="lineNum">      40 </span><span class="lineCov">         44 :     float bankBalance = wallet.getBankBalance();</span>
+<span class="lineNum">      41 </span><span class="lineCov">         44 :     return (bankBalance &gt;= price);</span>
 <span class="lineNum">      42 </span>            : }
 <span class="lineNum">      43 </span>            : 
 <span class="lineNum">      44 </span>            : /**
 <span class="lineNum">      45 </span>            :  * @brief method to get price of wood or graphite
 <a name="46"><span class="lineNum">      46 </span>            :  * @return returns price of wood or graphite</a>
 <span class="lineNum">      47 </span>            :  */
-<span class="lineNum">      48 </span><span class="lineCov">      52000 : float Material_Inventory::getPrice() const</span>
+<span class="lineNum">      48 </span><span class="lineCov">      44000 : float Material_Inventory::getPrice() const</span>
 <span class="lineNum">      49 </span>            : {
-<span class="lineNum">      50 </span><span class="lineCov">      52000 :     return price;</span>
+<span class="lineNum">      50 </span><span class="lineCov">      44000 :     return price;</span>
 <span class="lineNum">      51 </span>            : }
 <span class="lineNum">      52 </span>            : 
 <span class="lineNum">      53 </span>            : /**
 <a name="54"><span class="lineNum">      54 </span>            :  * @brief randomly increases the price of the material within a certain value range</a>
 <span class="lineNum">      55 </span>            :  */
-<span class="lineNum">      56 </span><span class="lineCov">      26156 : void Material_Inventory::setPrice()</span>
+<span class="lineNum">      56 </span><span class="lineCov">      22132 : void Material_Inventory::setPrice()</span>
 <span class="lineNum">      57 </span>            : {
-<span class="lineNum">      58 </span><span class="lineCov">      26156 :     price = minPrice + rand() % 1001;</span>
-<span class="lineNum">      59 </span><span class="lineCov">      26156 : }</span>
+<span class="lineNum">      58 </span><span class="lineCov">      22132 :     price = minPrice + rand() % 1001;</span>
+<span class="lineNum">      59 </span><span class="lineCov">      22132 : }</span>
 <span class="lineNum">      60 </span>            : 
 <span class="lineNum">      61 </span>            : /**
 <span class="lineNum">      62 </span>            :  * @brief function to get amount of wood or graphite
 <a name="63"><span class="lineNum">      63 </span>            :  * @return returns the amount of the material in inventory</a>
 <span class="lineNum">      64 </span>            :  */
-<span class="lineNum">      65 </span><span class="lineCov">         56 : float Material_Inventory::getAmount() const</span>
+<span class="lineNum">      65 </span><span class="lineCov">         66 : float Material_Inventory::getAmount() const</span>
 <span class="lineNum">      66 </span>            : {
-<span class="lineNum">      67 </span><span class="lineCov">         56 :     return amount;</span>
+<span class="lineNum">      67 </span><span class="lineCov">         66 :     return amount;</span>
 <span class="lineNum">      68 </span>            : }
 <span class="lineNum">      69 </span>            : 
 <span class="lineNum">      70 </span>            : /**
 <span class="lineNum">      71 </span>            :  * @brief Setter function for amount of material
 <a name="72"><span class="lineNum">      72 </span>            :  * @param sets amount of material to newamount</a>
 <span class="lineNum">      73 </span>            :  */
-<span class="lineNum">      74 </span><span class="lineCov">          2 : void Material_Inventory::setAmount(float newamount){</span>
-<span class="lineNum">      75 </span><span class="lineCov">          2 :   this-&gt;amount = newamount;</span>
-<span class="lineNum">      76 </span><span class="lineCov">          2 : }</span>
+<span class="lineNum">      74 </span><span class="lineCov">         11 : void Material_Inventory::setAmount(float newamount){</span>
+<span class="lineNum">      75 </span><span class="lineCov">         11 :   this-&gt;amount = newamount;</span>
+<span class="lineNum">      76 </span><span class="lineCov">         11 : }</span>
 <span class="lineNum">      77 </span>            : 
 <span class="lineNum">      78 </span>            : 
 <span class="lineNum">      79 </span>            : /**
@@ -144,32 +144,32 @@
 <span class="lineNum">      82 </span>            :  * by the appropriate amount.
 <a name="83"><span class="lineNum">      83 </span>            :  * @param reduces amount by change * n</a>
 <span class="lineNum">      84 </span>            :  */
-<span class="lineNum">      85 </span><span class="lineCov">         38 : void Material_Inventory::consume(float n)</span>
+<span class="lineNum">      85 </span><span class="lineCov">         44 : void Material_Inventory::consume(float n)</span>
 <span class="lineNum">      86 </span>            : {
-<span class="lineNum">      87 </span><span class="lineCov">         38 :     if (canConsume(n))</span>
+<span class="lineNum">      87 </span><span class="lineCov">         44 :     if (canConsume(n))</span>
 <span class="lineNum">      88 </span>            :     {
-<span class="lineNum">      89 </span><span class="lineCov">         38 :         amount -= change * n;</span>
+<span class="lineNum">      89 </span><span class="lineCov">         44 :         amount -= change * n;</span>
 <span class="lineNum">      90 </span>            :     }
-<span class="lineNum">      91 </span><span class="lineCov">         38 : }</span>
+<span class="lineNum">      91 </span><span class="lineCov">         44 : }</span>
 <span class="lineNum">      92 </span>            : 
 <span class="lineNum">      93 </span>            : /**
 <span class="lineNum">      94 </span>            :  * @brief function to check whether there is enough materials to make pencil
 <span class="lineNum">      95 </span>            :  * @param checks if amount is greater than change * n
 <a name="96"><span class="lineNum">      96 </span>            :  * @return returns true if there is enough materials, otherwise false</a>
 <span class="lineNum">      97 </span>            :  */
-<span class="lineNum">      98 </span><span class="lineCov">         88 : bool Material_Inventory::canConsume(float n) const</span>
+<span class="lineNum">      98 </span><span class="lineCov">        110 : bool Material_Inventory::canConsume(float n) const</span>
 <span class="lineNum">      99 </span>            : {
-<span class="lineNum">     100 </span><span class="lineCov">         88 :     return (amount &gt;= change * n);</span>
+<span class="lineNum">     100 </span><span class="lineCov">        110 :     return (amount &gt;= change * n);</span>
 <span class="lineNum">     101 </span>            : }
 <span class="lineNum">     102 </span>            : 
 <span class="lineNum">     103 </span>            : /**
 <span class="lineNum">     104 </span>            :  * @brief function to increase amount of graphite or wood in the inventory
 <a name="105"><span class="lineNum">     105 </span>            :  * @param increases amount by n</a>
 <span class="lineNum">     106 </span>            :  */
-<span class="lineNum">     107 </span><span class="lineCov">          2 : void Material_Inventory::setMaterial(int n)</span>
+<span class="lineNum">     107 </span><span class="lineCov">         11 : void Material_Inventory::setMaterial(int n)</span>
 <span class="lineNum">     108 </span>            : {
-<span class="lineNum">     109 </span><span class="lineCov">          2 :     amount += n;</span>
-<span class="lineNum">     110 </span><span class="lineCov">          2 : }</span>
+<span class="lineNum">     109 </span><span class="lineCov">         11 :     amount += n;</span>
+<span class="lineNum">     110 </span><span class="lineCov">         11 : }</span>
 </pre>
       </td>
     </tr>

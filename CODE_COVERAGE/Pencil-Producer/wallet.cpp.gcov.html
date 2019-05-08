@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2019-05-08 15:27:46</td>
+            <td class="headerValue">2019-05-08 15:57:00</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">7</td>
@@ -66,60 +66,60 @@
 <span class="lineNum">       4 </span>            :  * @brief Wallet::Wallet
 <a name="5"><span class="lineNum">       5 </span>            :  * wallet constructor. Default balance $145.00.</a>
 <span class="lineNum">       6 </span>            :  */
-<span class="lineNum">       7 </span><span class="lineCov">         91 : Wallet::Wallet() {</span>
-<span class="lineNum">       8 </span><span class="lineCov">         91 :     bankBalance = 145.00;</span>
-<span class="lineNum">       9 </span><span class="lineCov">         91 : }</span>
+<span class="lineNum">       7 </span><span class="lineCov">         77 : Wallet::Wallet() {</span>
+<span class="lineNum">       8 </span><span class="lineCov">         77 :     bankBalance = 145.00;</span>
+<span class="lineNum">       9 </span><span class="lineCov">         77 : }</span>
 <span class="lineNum">      10 </span>            : 
 <span class="lineNum">      11 </span>            : /**
 <span class="lineNum">      12 </span>            :  * @brief Wallet::getBankBalance
 <a name="13"><span class="lineNum">      13 </span>            :  * @return float bankBalance</a>
 <span class="lineNum">      14 </span>            :  */
-<span class="lineNum">      15 </span><span class="lineCov">        118 : float Wallet::getBankBalance() const</span>
+<span class="lineNum">      15 </span><span class="lineCov">        110 : float Wallet::getBankBalance() const</span>
 <span class="lineNum">      16 </span>            : {
-<span class="lineNum">      17 </span><span class="lineCov">        118 :     return bankBalance;</span>
+<span class="lineNum">      17 </span><span class="lineCov">        110 :     return bankBalance;</span>
 <span class="lineNum">      18 </span>            : }
 <span class="lineNum">      19 </span>            : 
 <span class="lineNum">      20 </span>            : /**
 <span class="lineNum">      21 </span>            :  * @brief function to set bank balance
 <a name="22"><span class="lineNum">      22 </span>            :  * @param sets bank balance to newBankBalance</a>
 <span class="lineNum">      23 </span>            :  */
-<span class="lineNum">      24 </span><span class="lineCov">          1 : void Wallet::setBankBalance(float newBankBalance){</span>
-<span class="lineNum">      25 </span><span class="lineCov">          1 :   this-&gt;bankBalance = newBankBalance;</span>
-<span class="lineNum">      26 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">      24 </span><span class="lineCov">         11 : void Wallet::setBankBalance(float newBankBalance){</span>
+<span class="lineNum">      25 </span><span class="lineCov">         11 :   this-&gt;bankBalance = newBankBalance;</span>
+<span class="lineNum">      26 </span><span class="lineCov">         11 : }</span>
 <span class="lineNum">      27 </span>            : 
 <span class="lineNum">      28 </span>            : /**
 <span class="lineNum">      29 </span>            :  * @brief Wallet::creditMoney
 <span class="lineNum">      30 </span>            :  * credits bank balance
 <a name="31"><span class="lineNum">      31 </span>            :  * @param money amount to credit bank balance</a>
 <span class="lineNum">      32 </span>            :  */
-<span class="lineNum">      33 </span><span class="lineCov">        117 : void Wallet::creditMoney(float money)</span>
+<span class="lineNum">      33 </span><span class="lineCov">         99 : void Wallet::creditMoney(float money)</span>
 <span class="lineNum">      34 </span>            : {
-<span class="lineNum">      35 </span><span class="lineCov">        117 :     if (canCreditMoney(money))</span>
+<span class="lineNum">      35 </span><span class="lineCov">         99 :     if (canCreditMoney(money))</span>
 <span class="lineNum">      36 </span>            :     {
-<span class="lineNum">      37 </span><span class="lineCov">        104 :         bankBalance += money;</span>
+<span class="lineNum">      37 </span><span class="lineCov">         88 :         bankBalance += money;</span>
 <span class="lineNum">      38 </span>            :     }
-<span class="lineNum">      39 </span><span class="lineCov">        117 : }</span>
+<span class="lineNum">      39 </span><span class="lineCov">         99 : }</span>
 <span class="lineNum">      40 </span>            : /**
 <span class="lineNum">      41 </span>            :  * @brief Wallet::debitMoney
 <span class="lineNum">      42 </span>            :  * debits bank balance
 <a name="43"><span class="lineNum">      43 </span>            :  * @param money amount to debit bank balance</a>
 <span class="lineNum">      44 </span>            :  */
-<span class="lineNum">      45 </span><span class="lineCov">        247 : void Wallet::debitMoney(float money)</span>
+<span class="lineNum">      45 </span><span class="lineCov">        209 : void Wallet::debitMoney(float money)</span>
 <span class="lineNum">      46 </span>            : {
-<span class="lineNum">      47 </span><span class="lineCov">        247 :     if (canDebitMoney(money))</span>
+<span class="lineNum">      47 </span><span class="lineCov">        209 :     if (canDebitMoney(money))</span>
 <span class="lineNum">      48 </span>            :     {
-<span class="lineNum">      49 </span><span class="lineCov">        221 :         bankBalance -= money;</span>
+<span class="lineNum">      49 </span><span class="lineCov">        187 :         bankBalance -= money;</span>
 <span class="lineNum">      50 </span>            :     }
-<span class="lineNum">      51 </span><span class="lineCov">        247 : }</span>
+<span class="lineNum">      51 </span><span class="lineCov">        209 : }</span>
 <span class="lineNum">      52 </span>            : 
 <span class="lineNum">      53 </span>            : /**
 <span class="lineNum">      54 </span>            :  * @brief Wallet::canCreditMoney
 <span class="lineNum">      55 </span>            :  * @param money amount to credit
 <a name="56"><span class="lineNum">      56 </span>            :  * @return true if amount to credit is positive, false otherwise</a>
 <span class="lineNum">      57 </span>            :  */
-<span class="lineNum">      58 </span><span class="lineCov">        117 : bool Wallet::canCreditMoney(float money) const</span>
+<span class="lineNum">      58 </span><span class="lineCov">         99 : bool Wallet::canCreditMoney(float money) const</span>
 <span class="lineNum">      59 </span>            : {
-<span class="lineNum">      60 </span><span class="lineCov">        117 :     return (money &gt;= 0);</span>
+<span class="lineNum">      60 </span><span class="lineCov">         99 :     return (money &gt;= 0);</span>
 <span class="lineNum">      61 </span>            : }
 <span class="lineNum">      62 </span>            : 
 <span class="lineNum">      63 </span>            : /**
@@ -128,9 +128,9 @@
 <span class="lineNum">      66 </span>            :  * @return true if amount to debit is not greater than bank balance
 <a name="67"><span class="lineNum">      67 </span>            :  * and amount to debit is positive, false otherwise</a>
 <span class="lineNum">      68 </span>            :  */
-<span class="lineNum">      69 </span><span class="lineCov">        429 : bool Wallet::canDebitMoney(float money) const</span>
+<span class="lineNum">      69 </span><span class="lineCov">        363 : bool Wallet::canDebitMoney(float money) const</span>
 <span class="lineNum">      70 </span>            : {
-<span class="lineNum">      71 </span><span class="lineCov">        429 :     return (bankBalance &gt;= money &amp;&amp; money &gt;= 0);</span>
+<span class="lineNum">      71 </span><span class="lineCov">        363 :     return (bankBalance &gt;= money &amp;&amp; money &gt;= 0);</span>
 <span class="lineNum">      72 </span>            : }
 </pre>
       </td>

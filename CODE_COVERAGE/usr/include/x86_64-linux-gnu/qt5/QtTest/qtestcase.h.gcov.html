@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2019-05-08 15:27:46</td>
+            <td class="headerValue">2019-05-08 15:57:00</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">3</td>
@@ -382,11 +382,11 @@
 <span class="lineNum">     320 </span>            :     Q_TESTLIB_EXPORT QTestData &amp;addRow(const char *format, ...) Q_ATTRIBUTE_FORMAT_PRINTF(1, 2);
 <a name="321"><span class="lineNum">     321 </span>            : </a>
 <span class="lineNum">     322 </span>            :     template &lt;typename T&gt;
-<span class="lineNum">     323 </span><span class="lineCov">         14 :     inline bool qCompare(T const &amp;t1, T const &amp;t2, const char *actual, const char *expected,</span>
+<span class="lineNum">     323 </span><span class="lineCov">        308 :     inline bool qCompare(T const &amp;t1, T const &amp;t2, const char *actual, const char *expected,</span>
 <span class="lineNum">     324 </span>            :                         const char *file, int line)
 <span class="lineNum">     325 </span>            :     {
-<span class="lineNum">     326 </span><span class="lineCov">         14 :         return compare_helper(t1 == t2, &quot;Compared values are not the same&quot;,</span>
-<span class="lineNum">     327 </span><span class="lineCov">         14 :                               toString(t1), toString(t2), actual, expected, file, line);</span>
+<span class="lineNum">     326 </span><span class="lineCov">        308 :         return compare_helper(t1 == t2, &quot;Compared values are not the same&quot;,</span>
+<span class="lineNum">     327 </span><span class="lineCov">        308 :                               toString(t1), toString(t2), actual, expected, file, line);</span>
 <span class="lineNum">     328 </span>            :     }
 <span class="lineNum">     329 </span>            : 
 <span class="lineNum">     330 </span>            :     Q_TESTLIB_EXPORT bool qCompare(float const &amp;t1, float const &amp;t2,
@@ -446,10 +446,10 @@
 <span class="lineNum">     384 </span>            :         return qCompare(qreal(t1), qreal(t2), actual, expected, file, line);
 <a name="385"><span class="lineNum">     385 </span>            :     }</a>
 <span class="lineNum">     386 </span>            : 
-<span class="lineNum">     387 </span><span class="lineCov">         11 :     inline bool qCompare(float const &amp;t1, double const &amp;t2, const char *actual,</span>
+<span class="lineNum">     387 </span><span class="lineCov">        242 :     inline bool qCompare(float const &amp;t1, double const &amp;t2, const char *actual,</span>
 <span class="lineNum">     388 </span>            :                                  const char *expected, const char *file, int line)
 <span class="lineNum">     389 </span>            :     {
-<span class="lineNum">     390 </span><span class="lineCov">         11 :         return qCompare(qreal(t1), qreal(t2), actual, expected, file, line);</span>
+<span class="lineNum">     390 </span><span class="lineCov">        242 :         return qCompare(qreal(t1), qreal(t2), actual, expected, file, line);</span>
 <span class="lineNum">     391 </span>            :     }
 <span class="lineNum">     392 </span>            : 
 <span class="lineNum">     393 </span>            :     template &lt;typename T&gt;

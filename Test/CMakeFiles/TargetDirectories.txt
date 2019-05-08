@@ -1,5 +1,0 @@
-/home/ezio/sprint5/Test/CMakeFiles/rebuild_cache.dir
-/home/ezio/sprint5/Test/CMakeFiles/edit_cache.dir
-/home/ezio/sprint5/Test/CMakeFiles/testpencils.dir
-/home/ezio/sprint5/Test/CMakeFiles/test.dir
-/home/ezio/sprint5/Test/CMakeFiles/testpencils_autogen.dir
