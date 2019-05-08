@@ -5,6 +5,8 @@ enable_testing()
 
 # Tell CMake to run moc when necessary:
 set(CMAKE_AUTOMOC ON)
+set(CMAKE_CXX_FLAGS "-g -O0 -Wall -fprofile-arcs -ftest-coverage")
+set(CMAKE_CXX_OUTPUT_EXTENSION_REPLACE ON)
 
 # As moc files are generated in the binary dir, tell CMake
 # to always look for includes there:
@@ -19,6 +21,7 @@ set(TEST_SRC
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
 find_package(Qt5Test REQUIRED)
+find_package(Qt5Network REQUIRED)
 
 if(CMAKE_COMPILER_IS_GNUCC)
     add_definitions(-Wall -Werror)
@@ -27,4 +30,4 @@ endif(CMAKE_COMPILER_IS_GNUCC)
 add_executable(testpencils tst_test.cpp ${TEST_SRC})
 add_test(testpencils testpencils)
 
-target_link_libraries(testpencils Qt5::Test)
+target_link_libraries(testpencils Qt5::Test Qt5::Network)

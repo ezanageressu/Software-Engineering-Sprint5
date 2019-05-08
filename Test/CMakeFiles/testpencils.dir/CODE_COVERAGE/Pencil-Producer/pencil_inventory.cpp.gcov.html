@@ -1,0 +1,385 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - main_coverage.info - Pencil-Producer/pencil_inventory.cpp</title>
+  <link rel="stylesheet" type="text/css" href="../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../index.html">top level</a> - <a href="index.html">Pencil-Producer</a> - pencil_inventory.cpp<span style="font-size: 80%;"> (source / <a href="pencil_inventory.cpp.func-sort-c.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">main_coverage.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">92</td>
+            <td class="headerCovTableEntry">94</td>
+            <td class="headerCovTableEntryHi">97.9 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2019-05-08 15:27:46</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">30</td>
+            <td class="headerCovTableEntry">30</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
+          </tr>
+          <tr><td><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span>            : #include &quot;pencil_inventory.h&quot;</a>
+<span class="lineNum">       2 </span>            : 
+<span class="lineNum">       3 </span>            : /**
+<span class="lineNum">       4 </span>            :  * @brief Pencil_Inventory::Pencil_Inventory
+<span class="lineNum">       5 </span>            :  * constructor for Pencil_Inventory class.
+<span class="lineNum">       6 </span>            :  * @note starts with default values:\n
+<span class="lineNum">       7 </span>            :  *  price = $1.00\n
+<span class="lineNum">       8 </span>            :  *  number of pencils = 0\n
+<a name="9"><span class="lineNum">       9 </span>            :  *  number of pencils produced = 0\n</a>
+<span class="lineNum">      10 </span>            :  */
+<span class="lineNum">      11 </span><span class="lineCov">         91 : Pencil_Inventory::Pencil_Inventory()</span>
+<span class="lineNum">      12 </span>            : {
+<span class="lineNum">      13 </span><span class="lineCov">         91 :     price = 1.0f;</span>
+<span class="lineNum">      14 </span><span class="lineCov">         91 :     amount = 0;</span>
+<span class="lineNum">      15 </span><span class="lineCov">         91 :     totalNumberOfPencilsProduced = 0;</span>
+<span class="lineNum">      16 </span><span class="lineCov">         91 : }</span>
+<span class="lineNum">      17 </span>            : 
+<span class="lineNum">      18 </span>            : /**
+<span class="lineNum">      19 </span>            :  * @brief function to get price of pencil
+<a name="20"><span class="lineNum">      20 </span>            :  * @return returns the price of a pencil</a>
+<span class="lineNum">      21 </span>            :  */
+<span class="lineNum">      22 </span><span class="lineCov">         21 : float Pencil_Inventory::getPrice() const</span>
+<span class="lineNum">      23 </span>            : {
+<span class="lineNum">      24 </span><span class="lineCov">         21 :     return price;</span>
+<span class="lineNum">      25 </span>            : }
+<span class="lineNum">      26 </span>            : 
+<span class="lineNum">      27 </span>            : /**
+<span class="lineNum">      28 </span>            :  * @brief function to get amount of pencils in the inventory
+<a name="29"><span class="lineNum">      29 </span>            :  * @return returns the number of pencils in inventory</a>
+<span class="lineNum">      30 </span>            :  */
+<span class="lineNum">      31 </span><span class="lineCov">         26 : int Pencil_Inventory::getAmount() const</span>
+<span class="lineNum">      32 </span>            : {
+<span class="lineNum">      33 </span><span class="lineCov">         26 :     return amount;</span>
+<span class="lineNum">      34 </span>            : }
+<span class="lineNum">      35 </span>            : 
+<span class="lineNum">      36 </span>            : /**
+<span class="lineNum">      37 </span>            :  * @brief function to get rate of public demand
+<a name="38"><span class="lineNum">      38 </span>            :  * @return returns the public demand of pencils</a>
+<span class="lineNum">      39 </span>            :  */
+<span class="lineNum">      40 </span><span class="lineCov">         12 : float Pencil_Inventory::getPublicDemand() const</span>
+<span class="lineNum">      41 </span>            : {
+<span class="lineNum">      42 </span><span class="lineCov">         12 :     return (round(100 * std::pow(1.1f,M)/ price)) / 100.0f;</span>
+<span class="lineNum">      43 </span>            : }
+<span class="lineNum">      44 </span>            : 
+<span class="lineNum">      45 </span>            : /**
+<span class="lineNum">      46 </span>            :  * @brief function to get total number of pencils produced
+<a name="47"><span class="lineNum">      47 </span>            :  * @return returns the total number of pencils produced</a>
+<span class="lineNum">      48 </span>            :  */
+<span class="lineNum">      49 </span><span class="lineCov">         55 : int Pencil_Inventory::getTotalNumberOfPencilsProduced() const</span>
+<span class="lineNum">      50 </span>            : {
+<span class="lineNum">      51 </span><span class="lineCov">         55 :     return totalNumberOfPencilsProduced;</span>
+<span class="lineNum">      52 </span>            : }
+<span class="lineNum">      53 </span>            : 
+<span class="lineNum">      54 </span>            : /**
+<span class="lineNum">      55 </span>            :  * @brief function to get total number of pencils to be sold per second
+<a name="56"><span class="lineNum">      56 </span>            :  * @return total number of pencils that should be sold</a>
+<span class="lineNum">      57 </span>            :  */
+<span class="lineNum">      58 </span><span class="lineCov">         12 : int Pencil_Inventory::getNumberOfPencilsToBeSold() const</span>
+<span class="lineNum">      59 </span>            : {
+<span class="lineNum">      60 </span><span class="lineCov">         12 :     return std::min(static_cast&lt;int&gt;(floor(5 * getPublicDemand())), amount);</span>
+<span class="lineNum">      61 </span>            : }
+<span class="lineNum">      62 </span>            : 
+<span class="lineNum">      63 </span>            : /**
+<span class="lineNum">      64 </span>            :  * @brief function to get intelligence
+<a name="65"><span class="lineNum">      65 </span>            :  * @return number of intelligence</a>
+<span class="lineNum">      66 </span>            :  */
+<span class="lineNum">      67 </span><span class="lineCov">         80 : int Pencil_Inventory::getIntelligence() const</span>
+<span class="lineNum">      68 </span>            : {
+<span class="lineNum">      69 </span><span class="lineCov">         80 :     return Intelligence;</span>
+<span class="lineNum">      70 </span>            : }
+<span class="lineNum">      71 </span>            : 
+<span class="lineNum">      72 </span>            : /**
+<span class="lineNum">      73 </span>            :  * @brief function to set price of the pencil
+<span class="lineNum">      74 </span>            :  * @param sets price of pencil to newprice
+<a name="75"><span class="lineNum">      75 </span>            :  */</a>
+<span class="lineNum">      76 </span>            : 
+<span class="lineNum">      77 </span><span class="lineCov">          8 : void Pencil_Inventory::setPrice(float newprice){</span>
+<span class="lineNum">      78 </span><span class="lineCov">          8 :   price = newprice;</span>
+<span class="lineNum">      79 </span><span class="lineCov">          8 : }</span>
+<span class="lineNum">      80 </span>            : 
+<span class="lineNum">      81 </span>            : /**
+<span class="lineNum">      82 </span>            :  * @brief function to set pencils in the inventory
+<a name="83"><span class="lineNum">      83 </span>            :  * @param sets pencils in the inventory to newamount</a>
+<span class="lineNum">      84 </span>            :  */
+<span class="lineNum">      85 </span><span class="lineCov">         13 : void Pencil_Inventory::setAmount(float newamount){</span>
+<span class="lineNum">      86 </span><span class="lineCov">         13 :   amount = newamount;</span>
+<span class="lineNum">      87 </span><span class="lineCov">         13 : }</span>
+<span class="lineNum">      88 </span>            : 
+<span class="lineNum">      89 </span>            : /**
+<span class="lineNum">      90 </span>            :  * @brief function to set total number of pencils produced
+<a name="91"><span class="lineNum">      91 </span>            :  * @param sets total number of pencils produced to newtotal</a>
+<span class="lineNum">      92 </span>            :  */
+<span class="lineNum">      93 </span><span class="lineCov">         16 : void Pencil_Inventory::setTotalNumberOfPencilsProduced(float newtotal){</span>
+<span class="lineNum">      94 </span><span class="lineCov">         16 :   totalNumberOfPencilsProduced = newtotal;</span>
+<span class="lineNum">      95 </span><span class="lineCov">         16 : }</span>
+<span class="lineNum">      96 </span>            : 
+<span class="lineNum">      97 </span>            : /**
+<span class="lineNum">      98 </span>            :  * @brief function to set marketing value
+<a name="99"><span class="lineNum">      99 </span>            :  * @param sets marketing value to newM</a>
+<span class="lineNum">     100 </span>            :  */
+<span class="lineNum">     101 </span><span class="lineCov">         10 : void Pencil_Inventory::setM(float newM){</span>
+<span class="lineNum">     102 </span><span class="lineCov">         10 :   M = newM;</span>
+<span class="lineNum">     103 </span><span class="lineCov">         10 : }</span>
+<span class="lineNum">     104 </span>            : 
+<span class="lineNum">     105 </span>            : /**
+<span class="lineNum">     106 </span>            :  * @brief function to set marketing price
+<a name="107"><span class="lineNum">     107 </span>            :  * @param sets marketing price to newmarketingprice</a>
+<span class="lineNum">     108 </span>            :  */
+<span class="lineNum">     109 </span><span class="lineCov">         10 : void Pencil_Inventory::setMarketingPrice(float newmarketingprice){</span>
+<span class="lineNum">     110 </span><span class="lineCov">         10 :   marketing_price = newmarketingprice;</span>
+<span class="lineNum">     111 </span><span class="lineCov">         10 : }</span>
+<span class="lineNum">     112 </span>            : 
+<span class="lineNum">     113 </span>            : /**
+<span class="lineNum">     114 </span>            :  * @brief Pencil_Inventory::increasePrice
+<a name="115"><span class="lineNum">     115 </span>            :  * increase the price of pencils.</a>
+<span class="lineNum">     116 </span>            :  */
+<span class="lineNum">     117 </span><span class="lineCov">       1300 : void Pencil_Inventory::increasePrice()</span>
+<span class="lineNum">     118 </span>            : {
+<span class="lineNum">     119 </span><span class="lineCov">       1300 :     price += change;</span>
+<span class="lineNum">     120 </span><span class="lineCov">       1300 : }</span>
+<span class="lineNum">     121 </span>            : 
+<span class="lineNum">     122 </span>            : /**
+<span class="lineNum">     123 </span>            :  * @brief Pencil_Inventory::decreasePrice
+<a name="124"><span class="lineNum">     124 </span>            :  * decrease the price of pencils.</a>
+<span class="lineNum">     125 </span>            :  */
+<span class="lineNum">     126 </span><span class="lineCov">       2847 : void Pencil_Inventory::decreasePrice()</span>
+<span class="lineNum">     127 </span>            : {
+<span class="lineNum">     128 </span><span class="lineCov">       2847 :     if (canDecreasePrice())</span>
+<span class="lineNum">     129 </span>            :     {
+<span class="lineNum">     130 </span><span class="lineCov">       1547 :         price -= change;</span>
+<span class="lineNum">     131 </span>            :     }
+<span class="lineNum">     132 </span><span class="lineCov">       2847 : }</span>
+<span class="lineNum">     133 </span>            : 
+<span class="lineNum">     134 </span>            : /**
+<span class="lineNum">     135 </span>            :  * @brief Pencil_Inventory::canDecreasePrice
+<span class="lineNum">     136 </span>            :  * checks if the price can be decreased without resulting in a negative price.
+<a name="137"><span class="lineNum">     137 </span>            :  * @return true if new price is positive, false otherwise.</a>
+<span class="lineNum">     138 </span>            :  */
+<span class="lineNum">     139 </span><span class="lineCov">       2847 : bool Pencil_Inventory::canDecreasePrice() const</span>
+<span class="lineNum">     140 </span>            : {
+<span class="lineNum">     141 </span><span class="lineCov">       2847 :     return (static_cast&lt;int&gt;(price * 100) / 100.0f &gt; change);</span>
+<span class="lineNum">     142 </span>            : }
+<span class="lineNum">     143 </span>            : 
+<span class="lineNum">     144 </span>            : /**
+<span class="lineNum">     145 </span>            :  * @brief Pencil_Inventory::sellPencil
+<span class="lineNum">     146 </span>            :  * the function checks if there are pencils to sell and then
+<span class="lineNum">     147 </span>            :  * decrements the number of pencils in the inventory by n.
+<span class="lineNum">     148 </span>            :  * Wallet is then credited by the price of n pencils
+<span class="lineNum">     149 </span>            :  * @param w wallet
+<a name="150"><span class="lineNum">     150 </span>            :  * @param n the number of pencils to sell. Default value is 1.</a>
+<span class="lineNum">     151 </span>            :  */
+<span class="lineNum">     152 </span><span class="lineCov">         39 : void Pencil_Inventory::sellPencil(Wallet&amp; w, int n)</span>
+<span class="lineNum">     153 </span>            : {
+<span class="lineNum">     154 </span><span class="lineCov">         39 :     if (canSellPencil(n))</span>
+<span class="lineNum">     155 </span>            :     {
+<span class="lineNum">     156 </span><span class="lineCov">         39 :         amount -= n;</span>
+<span class="lineNum">     157 </span><span class="lineCov">         39 :         w.creditMoney(price * n);</span>
+<span class="lineNum">     158 </span>            :     }
+<span class="lineNum">     159 </span><span class="lineCov">         39 : }</span>
+<span class="lineNum">     160 </span>            : 
+<span class="lineNum">     161 </span>            : /**
+<span class="lineNum">     162 </span>            :  * @brief function to check whether we can sell pencil
+<span class="lineNum">     163 </span>            :  * @param checks if amount is greater than n
+<a name="164"><span class="lineNum">     164 </span>            :  * @return returns true if there are pencils to sell, false otherwise</a>
+<span class="lineNum">     165 </span>            :  */
+<span class="lineNum">     166 </span><span class="lineCov">         39 : bool Pencil_Inventory::canSellPencil(int n) const</span>
+<span class="lineNum">     167 </span>            : {
+<span class="lineNum">     168 </span><span class="lineCov">         39 :     return (amount &gt;= n);</span>
+<span class="lineNum">     169 </span>            : }
+<span class="lineNum">     170 </span>            : 
+<span class="lineNum">     171 </span>            : /**
+<span class="lineNum">     172 </span>            :  * @brief Pencil_Inventory::producePencil
+<span class="lineNum">     173 </span>            :  * checks if there is enough material to produce n pencils. If true
+<span class="lineNum">     174 </span>            :  * consumes graphite and wood for n pencils and increments the number
+<span class="lineNum">     175 </span>            :  * of pencils in the inventory and totalNumberOfPencilsProduced by n.
+<span class="lineNum">     176 </span>            :  * @param graphiteInventory the amount of graphite in the inverntory
+<span class="lineNum">     177 </span>            :  * @param woodInventory the amount of wood in the inventory
+<a name="178"><span class="lineNum">     178 </span>            :  * @param n the number of pencils to produce</a>
+<span class="lineNum">     179 </span>            :  */
+<span class="lineNum">     180 </span><span class="lineCov">         19 : void Pencil_Inventory::producePencil(Graphite_Inventory&amp; graphiteInventory, Wood_Inventory&amp; woodInventory, float n)</span>
+<span class="lineNum">     181 </span>            : {
+<span class="lineNum">     182 </span><span class="lineCov">         19 :     if (canProducePencil(graphiteInventory, woodInventory, n))</span>
+<span class="lineNum">     183 </span>            :     {
+<span class="lineNum">     184 </span><span class="lineCov">         19 :         graphiteInventory.consume(n);</span>
+<span class="lineNum">     185 </span><span class="lineCov">         19 :         woodInventory.consume(n);</span>
+<span class="lineNum">     186 </span><span class="lineCov">         19 :         amount += n;</span>
+<span class="lineNum">     187 </span><span class="lineCov">         19 :         totalNumberOfPencilsProduced += n;</span>
+<span class="lineNum">     188 </span>            :     }
+<span class="lineNum">     189 </span><span class="lineCov">         19 : }</span>
+<span class="lineNum">     190 </span>            : 
+<span class="lineNum">     191 </span>            : /**
+<span class="lineNum">     192 </span>            :  * @brief function to check whether pencils can be made or not
+<span class="lineNum">     193 </span>            :  * @param checks if there is enough graphite in the graphiteInventory
+<span class="lineNum">     194 </span>            :  * @param checks if there is enough wood in the woodInventory
+<span class="lineNum">     195 </span>            :  * @param n is the required wood and graphite to make pencil
+<a name="196"><span class="lineNum">     196 </span>            :  * @return returns true if we can make pencil, false otherwise</a>
+<span class="lineNum">     197 </span>            :  */
+<span class="lineNum">     198 </span><span class="lineCov">         25 : bool Pencil_Inventory::canProducePencil(Graphite_Inventory&amp; graphiteInventory, Wood_Inventory&amp; woodInventory, float n) const</span>
+<span class="lineNum">     199 </span>            : {
+<span class="lineNum">     200 </span><span class="lineCov">         25 :     return (graphiteInventory.canConsume(n) &amp;&amp; woodInventory.canConsume(n));</span>
+<span class="lineNum">     201 </span>            : }
+<span class="lineNum">     202 </span>            : 
+<span class="lineNum">     203 </span>            : /**
+<span class="lineNum">     204 </span>            :  * @brief function to increase total pencils produced and pencils in the inventory
+<span class="lineNum">     205 </span>            :  * @param increases total number of pencils produced by n
+<a name="206"><span class="lineNum">     206 </span>            :  * @param increases pencils in the inventory by m</a>
+<span class="lineNum">     207 </span>            :  */
+<span class="lineNum">     208 </span><span class="lineCov">         39 : void Pencil_Inventory::setPencil(int n,int m)</span>
+<span class="lineNum">     209 </span>            : {
+<span class="lineNum">     210 </span><span class="lineCov">         39 :     totalNumberOfPencilsProduced += n;</span>
+<span class="lineNum">     211 </span><span class="lineCov">         39 :     amount = amount + m;</span>
+<span class="lineNum">     212 </span><span class="lineCov">         39 : }</span>
+<span class="lineNum">     213 </span>            : 
+<span class="lineNum">     214 </span>            : /**
+<a name="215"><span class="lineNum">     215 </span>            :  * @brief function to increase intelligence by 1</a>
+<span class="lineNum">     216 </span>            :  */
+<span class="lineNum">     217 </span><span class="lineCov">         26 : void Pencil_Inventory::changeIntelligence()</span>
+<span class="lineNum">     218 </span>            : {
+<span class="lineNum">     219 </span><span class="lineCov">         26 :     if(totalNumberOfPencilsProduced&gt;=3000 &amp;&amp; Intelligence &lt;200)</span>
+<span class="lineNum">     220 </span><span class="lineCov">         13 :         Intelligence += 1;</span>
+<span class="lineNum">     221 </span><span class="lineCov">         26 : }</span>
+<span class="lineNum">     222 </span>            : 
+<span class="lineNum">     223 </span>            : /**
+<span class="lineNum">     224 </span>            :  * @brief function to check whether we have intelligence
+<span class="lineNum">     225 </span>            :  * @param checks if we have intelligence greater than m
+<a name="226"><span class="lineNum">     226 </span>            :  * @return returns true if the condition is met, false otherwise</a>
+<span class="lineNum">     227 </span>            :  */
+<span class="lineNum">     228 </span><span class="lineCov">         26 : bool Pencil_Inventory::checkIntelligence(int m)</span>
+<span class="lineNum">     229 </span>            : {
+<span class="lineNum">     230 </span><span class="lineCov">         26 :     if(Intelligence &gt; m){</span>
+<span class="lineNum">     231 </span><span class="lineCov">         13 :         return true;</span>
+<span class="lineNum">     232 </span>            :     }
+<span class="lineNum">     233 </span>            :     else{
+<span class="lineNum">     234 </span><span class="lineCov">         13 :         return false;</span>
+<span class="lineNum">     235 </span>            :     }
+<span class="lineNum">     236 </span>            : 
+<span class="lineNum">     237 </span>            : }
+<span class="lineNum">     238 </span>            : 
+<span class="lineNum">     239 </span>            : /**
+<span class="lineNum">     240 </span>            :  * @brief function to set intelligence
+<a name="241"><span class="lineNum">     241 </span>            :  * @param sets intelligence to n</a>
+<span class="lineNum">     242 </span>            :  */
+<span class="lineNum">     243 </span><span class="lineCov">         43 : void Pencil_Inventory::setIntelligence(int n){</span>
+<span class="lineNum">     244 </span><span class="lineCov">         43 :     if(Intelligence &gt; 200){</span>
+<span class="lineNum">     245 </span><span class="lineNoCov">          0 :         Intelligence = 200;</span>
+<span class="lineNum">     246 </span>            :     }
+<span class="lineNum">     247 </span>            :     else{
+<span class="lineNum">     248 </span><span class="lineCov">         43 :         Intelligence = n;</span>
+<span class="lineNum">     249 </span>            :     }
+<span class="lineNum">     250 </span>            : 
+<span class="lineNum">     251 </span><span class="lineCov">         43 : }</span>
+<span class="lineNum">     252 </span>            : 
+<span class="lineNum">     253 </span>            : /**
+<span class="lineNum">     254 </span>            :  * @brief function to increase marketing
+<a name="255"><span class="lineNum">     255 </span>            :  * @param increases marketing by m</a>
+<span class="lineNum">     256 </span>            :  */
+<span class="lineNum">     257 </span><span class="lineCov">         11 : void Pencil_Inventory::increasemarketing(int m)</span>
+<span class="lineNum">     258 </span>            : {
+<span class="lineNum">     259 </span><span class="lineCov">         11 :     M += m;</span>
+<span class="lineNum">     260 </span><span class="lineCov">         11 :     if(M &gt; 30){</span>
+<span class="lineNum">     261 </span><span class="lineNoCov">          0 :         M = 30;</span>
+<span class="lineNum">     262 </span>            :     }
+<span class="lineNum">     263 </span>            : 
+<span class="lineNum">     264 </span><span class="lineCov">         11 : }</span>
+<span class="lineNum">     265 </span>            : 
+<span class="lineNum">     266 </span>            : /**
+<span class="lineNum">     267 </span>            :  * @brief function to increase intelligence
+<a name="268"><span class="lineNum">     268 </span>            :  * @param increases intelligence by n</a>
+<span class="lineNum">     269 </span>            :  */
+<span class="lineNum">     270 </span><span class="lineCov">         11 : void Pencil_Inventory::increaseIntelligence(int n)</span>
+<span class="lineNum">     271 </span>            : {
+<span class="lineNum">     272 </span><span class="lineCov">         11 :     Intelligence += n;</span>
+<span class="lineNum">     273 </span><span class="lineCov">         11 :     if(Intelligence &gt; 200){</span>
+<span class="lineNum">     274 </span><span class="lineCov">         11 :         Intelligence = 200;</span>
+<span class="lineNum">     275 </span>            :     }
+<span class="lineNum">     276 </span><span class="lineCov">         11 : }</span>
+<span class="lineNum">     277 </span>            : 
+<span class="lineNum">     278 </span>            : 
+<span class="lineNum">     279 </span>            : /**
+<span class="lineNum">     280 </span>            :  * @brief function to get marketing value
+<a name="281"><span class="lineNum">     281 </span>            :  * @return returns number of marketing</a>
+<span class="lineNum">     282 </span>            :  */
+<span class="lineNum">     283 </span><span class="lineCov">         47 : float Pencil_Inventory::getM() const{</span>
+<span class="lineNum">     284 </span><span class="lineCov">         47 :     return M;</span>
+<span class="lineNum">     285 </span>            : }
+<span class="lineNum">     286 </span>            : 
+<span class="lineNum">     287 </span>            : /**
+<span class="lineNum">     288 </span>            :  * @brief function to get marketing price
+<a name="289"><span class="lineNum">     289 </span>            :  * @return returns marketing price</a>
+<span class="lineNum">     290 </span>            :  */
+<span class="lineNum">     291 </span><span class="lineCov">         23 : float Pencil_Inventory::getMarketingPrice()</span>
+<span class="lineNum">     292 </span>            : {
+<span class="lineNum">     293 </span><span class="lineCov">         23 :     return marketing_price;</span>
+<span class="lineNum">     294 </span>            : }
+<span class="lineNum">     295 </span>            : 
+<span class="lineNum">     296 </span>            : /**
+<span class="lineNum">     297 </span>            :  * @brief Pencil_Inventory::UpgradeMarketing
+<span class="lineNum">     298 </span>            :  * check if user have enough money to buy marketing
+<span class="lineNum">     299 </span>            :  * if true then debit money and increment marketing by one
+<span class="lineNum">     300 </span>            :  * and increase marketing price by 10%
+<a name="301"><span class="lineNum">     301 </span>            :  * @param wallet</a>
+<span class="lineNum">     302 </span>            :  */
+<span class="lineNum">     303 </span><span class="lineCov">         26 : void Pencil_Inventory::UpgradeMarketing(Wallet&amp; wallet){</span>
+<span class="lineNum">     304 </span><span class="lineCov">         26 :     if(wallet.canDebitMoney(marketing_price) &amp;&amp; M &lt; 30){</span>
+<span class="lineNum">     305 </span><span class="lineCov">         13 :         wallet.debitMoney(marketing_price);</span>
+<span class="lineNum">     306 </span><span class="lineCov">         13 :         M++;</span>
+<a name="307"><span class="lineNum">     307 </span><span class="lineCov">         13 :         marketing_price *= 1.1;</span></a>
+<span class="lineNum">     308 </span>            :     }
+<span class="lineNum">     309 </span><span class="lineCov">         65 : }</span>
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.13</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>

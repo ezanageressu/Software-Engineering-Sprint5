@@ -49,6 +49,12 @@ void _Test::changingPencilPrice()
 
     // Price should not be negative after attempting to decrement below zero
     QVERIFY(p.getPrice() >= 0.0f);
+
+    p.setPrice(1);
+    QCOMPARE(p.getPrice(), 1.00f);
+    
+    p.setAmount(5);
+    QCOMPARE(p.getAmount(), 5);
 }
 
 /**
@@ -71,6 +77,9 @@ void _Test::sellPencils()
         p.sellPencil(w);
     }
     QCOMPARE(p.getAmount(), 2);
+    
+    w.setBankBalance(300);
+    QCOMPARE(w.getBankBalance(), 300.00f);
 }
 
 /**
@@ -134,6 +143,23 @@ void _Test::testAPM()
    }
    QCOMPARE(apm.getNumber(), 10);
 
+   p.setAmount(0);
+   apm.setNumber(1);
+   apm.producePencil(p, graphite, wood);
+   QCOMPARE(p.getAmount(), 2);
+
+   p.setTotalNumberOfPencilsProduced(5000);
+   apm.setVersion(1);
+   apm.setAPMRate(10);
+   apm.SecondUpgradeAPM(p);
+   QCOMPARE(apm.getVersion(), 2.00f);
+   QCOMPARE(apm.getAPMRate(), 11.00f);
+   QCOMPARE(apm.getIntelligencePrice(), 200.00f);
+
+   apm.setPrice(200);
+   apm.setIntelligencePrice(300);
+   QCOMPARE(apm.getPrice(), 200.00f);
+   QCOMPARE(apm.getIntelligencePrice(), 300.00f);
 }
 
 /**
@@ -167,6 +193,11 @@ void _Test::testupgradeAPM()
    QCOMPARE(p.getIntelligence(), 100);
    apm.FirstUpgradeAPM(p);
    QCOMPARE(apm.getRate(), 132.0f);
+
+   p.setTotalNumberOfPencilsProduced(5000);
+   QCOMPARE(apm.SecondCanUpgradeAPM(p), true);
+
+   QVERIFY(p.getNumberOfPencilsToBeSold()>=0);
 }
 
 /**
@@ -188,9 +219,11 @@ void _Test::testIntelligence()
     p.changeIntelligence();
     QCOMPARE(p.getIntelligence(), 1);
 
-    p.setIntelligence(300);
+    p.setIntelligence(150);
+    QCOMPARE(p.getIntelligence(), 150);
+	
+    p.increaseIntelligence(400);
     QCOMPARE(p.getIntelligence(), 200);
-
 }
 
 /**
@@ -213,6 +246,14 @@ void _Test::testMarketing()
     p.UpgradeMarketing(w);
     QCOMPARE(p.getM(), 1.00f);
 
+    p.increasemarketing(2);
+    QCOMPARE(p.getM(), 3.00f);
+
+    p.setM(5);
+    QCOMPARE(p.getM(), 5.00f);
+
+    p.setMarketingPrice(100);
+    QCOMPARE(p.getMarketingPrice(), 100.00f);
 }
 
 /**
@@ -253,6 +294,12 @@ void _Test::testMaterials()
 
     QCOMPARE(graphite.getAmount(), 1100.0);
     QCOMPARE(wood.getAmount(), 1100.0);
+
+    wood.setAmount(5);
+    QCOMPARE(wood.getAmount(), 5.0);
+    wood.setMaterial(5);
+    QCOMPARE(wood.getAmount(), 10.0);
+    
 }
 
 QTEST_APPLESS_MAIN(_Test)
