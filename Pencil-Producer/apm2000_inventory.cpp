@@ -11,6 +11,7 @@ APM2000_Inventory::APM2000_Inventory()
 {
     number = 0;
     price = 150.0f;
+    intelligence_price = 50;
 }
 
 /**
@@ -194,11 +195,11 @@ void APM2000_Inventory::FirstUpgradeAPM(Pencil_Inventory& pencil){
     if(FirstCanUpgradeAPM(pencil)&& version == 0){
         max++;
         apmrate *= 1.1f;
-        intelligence_price = 50;
         balance = pencil.getIntelligence();
         balance -= intelligence_price;
         pencil.setIntelligence(balance);
         version = 1;
+        intelligence_price = 200;
     }
 }
 
@@ -212,7 +213,6 @@ void APM2000_Inventory::SecondUpgradeAPM(Pencil_Inventory & pencil){
     if(SecondCanUpgradeAPM(pencil) && version == 1){
         max++;
         apmrate *= 1.1;
-        intelligence_price = 200;
         balance = pencil.getIntelligence();
         balance -= intelligence_price;
         pencil.setIntelligence(balance);

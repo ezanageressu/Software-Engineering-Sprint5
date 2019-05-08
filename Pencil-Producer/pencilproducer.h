@@ -128,7 +128,7 @@ private slots:
     /**
      * @brief SLOT handler for upgrade APM button
      */
-    void on_pushButton_clicked();
+    void on_upgradeAPM_clicked();
 
     /**
      * @brief SLOT handler for buy marketing button

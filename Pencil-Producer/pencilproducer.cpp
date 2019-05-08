@@ -26,7 +26,7 @@ PencilProducer::PencilProducer(QWidget *parent) :
     ui->setupUi(this);
     ui->gameover->hide();
     ui->textBuyMarketing->setVisible(false);
-    ui->pushButton->setVisible(false);
+    ui->upgradeAPM->setVisible(false);
     ui->unlockM->setVisible(false);
     update();
     startTimer();
@@ -95,6 +95,9 @@ void PencilProducer::update()
 
     str.setNum(priceOfGraphite, 'f', 2);
     ui->buyGraphite->setText("Buy Graphite \n$" + str + " / 100.00 m");
+
+    str.setNum(apm2000Inventory.getIntelligencePrice());
+    ui->upgradeAPM->setText("Upgrade APM \n" + str + "IQ");
 
     str.setNum(priceOfAPM2000, 'f', 2);
     ui->buyMore->setText("Buy APM \n$" + str);
@@ -207,26 +210,26 @@ void PencilProducer::updateAll()
             {
                 ui->unlockM->setEnabled(false);
             }
-            ui->pushButton->setVisible(true);
+            ui->upgradeAPM->setVisible(true);
 
             // unlock the upgrade APM button
             if(pencilInventory.getIntelligence() >= 50 && apm2000Inventory.getVersion() == 0)
             {
-                ui->pushButton->setEnabled(true);
+                ui->upgradeAPM->setEnabled(true);
             }
             else if (pencilInventory.getIntelligence() >= 200 && apm2000Inventory.getVersion() == 1
                      && pencilInventory.getTotalNumberOfPencilsProduced() >= 5000){
-                ui->pushButton->setEnabled(true);
+                ui->upgradeAPM->setEnabled(true);
             }
             else
             {
-                ui->pushButton->setEnabled(false);
+                ui->upgradeAPM->setEnabled(false);
             }
 
         }
         else{
             ui->unlockM->setVisible(false);
-            ui->pushButton->setVisible(false);
+            ui->upgradeAPM->setVisible(false);
         }
         counter = 0;
     }
@@ -284,7 +287,7 @@ void PencilProducer::on_d4_clicked()
 }
 
 // upgrade apm button
-void PencilProducer::on_pushButton_clicked()
+void PencilProducer::on_upgradeAPM_clicked()
 {
     apm2000Inventory.FirstUpgradeAPM(pencilInventory);
     if(pencilInventory.getIntelligence() >= 200)
@@ -499,9 +502,9 @@ void PencilProducer::on_quit_clicked()
     // reset all the values when quit game is clicked
     wallet.setBankBalance(145);
     apm2000Inventory.setNumber(0);
-    apm2000Inventory.setAPMRate(0);
+    apm2000Inventory.setAPMRate(1);
     apm2000Inventory.setPrice(150);
-    apm2000Inventory.setIntelligencePrice(0);
+    apm2000Inventory.setIntelligencePrice(50);
     pencilInventory.setAmount(0);
     pencilInventory.setIntelligence(0);
     pencilInventory.setM(0);
@@ -513,6 +516,9 @@ void PencilProducer::on_quit_clicked()
     apm2000Inventory.setVersion(0);
     unlock = 0;
 
+    ui->textBuyMarketing->setVisible(false);
+    ui->upgradeAPM->setVisible(false);
+    ui->unlockM->setVisible(false);
     // emit signal which takes back to welcome screen
     emit quitgameclicked();
 }

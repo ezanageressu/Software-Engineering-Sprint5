@@ -1,0 +1,4 @@
+/home/ezio/sprint5/Pencil-Producer/CMakeFiles/rebuild_cache.dir
+/home/ezio/sprint5/Pencil-Producer/CMakeFiles/pencilproducer.dir
+/home/ezio/sprint5/Pencil-Producer/CMakeFiles/edit_cache.dir
+/home/ezio/sprint5/Pencil-Producer/CMakeFiles/pencilproducer_autogen.dir

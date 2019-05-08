@@ -37,7 +37,8 @@
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">background-color: rgb(138, 226, 52);</string>
+       <string notr="true">background-color: rgb(78, 154, 6);
+color: rgb(255, 255, 255);</string>
       </property>
       <property name="text">
        <string>Start Game</string>
@@ -53,7 +54,8 @@
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">background-color: rgb(233, 185, 110);</string>
+       <string notr="true">background-color: rgb(196, 160, 0);
+color: rgb(255, 255, 255);</string>
       </property>
       <property name="text">
        <string>Load Game</string>
@@ -69,7 +71,8 @@
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">background-color: rgb(239, 41, 41);</string>
+       <string notr="true">background-color: rgb(92, 53, 102);
+color: rgb(255, 255, 255);</string>
       </property>
       <property name="text">
        <string>Highscore</string>
@@ -98,7 +101,8 @@
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">background-color: rgb(92, 53, 102);</string>
+       <string notr="true">background-color: rgb(204, 0, 0);
+color: rgb(255, 255, 255);</string>
       </property>
       <property name="text">
        <string>Delete Player</string>
