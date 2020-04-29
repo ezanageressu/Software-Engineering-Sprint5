@@ -68,6 +68,6 @@ Development Environment: Qt Creator
 
 ### Additional updates to this sprint
 
-1. Fixed Scoreboard such that it works when there are less than 10 highscores
-2. Splitted scoreboard, welcome screen and gameplay screen into 3 different UIs and classes
-3. Improved documentation
+1. Fixed Scoreboard such that it works when there are less than 10 highscores.
+2. Splitted scoreboard, welcome screen and gameplay screen into 3 different UIs and classes.
+3. Improved documentation.
